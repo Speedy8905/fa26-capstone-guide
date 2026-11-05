@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ned's Capstone Survival Guide</title>
+<meta name="description" content="A step-by-step survival guide and quick reference for the FA26 Digital Marketing Capstone: Omnichannel Digital Strategy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{
+  --board:#1b2626; --board2:#223030; --panel:#263636; --panel2:#2d4040; --line:#4a6262;
+  --chalk:#f4f1e6; --muted:#c9d3cf;
+  --pink:#ff6fae; --yellow:#ffe45e; --green:#62f0a5; --blue:#63c9ff; --purple:#bb92ff;
+  --ink:#1b2626;
+  --hand:'Patrick Hand','Chalkboard SE','Bradley Hand','Segoe Print',cursive;
+  --sans:'Nunito',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --stuckh:64px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--board);color:var(--chalk);font-family:var(--sans);font-size:17px;line-height:1.6;
+  background-image:radial-gradient(circle at 20% 10%,rgba(255,255,255,.05),transparent 40%),radial-gradient(circle at 80% 70%,rgba(255,255,255,.04),transparent 45%);
+  padding-bottom:calc(var(--stuckh) + 24px)}
+[id]{scroll-margin-top:140px}
+h1:focus{outline:none}
+a{color:var(--blue)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--yellow);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--yellow);color:var(--ink);padding:8px 12px;border-radius:6px;z-index:100}
+.skip:focus{left:8px}
+h1,h2,h3{font-family:var(--hand);font-weight:400;letter-spacing:.3px;line-height:1.15;margin:0 0 .4em}
+h1{font-size:clamp(2.1rem,5vw,3.2rem)}
+h2{font-size:clamp(1.6rem,3.2vw,2.2rem);color:var(--yellow)}
+h3{font-size:1.4rem}
+p{margin:0 0 .8em}
+ul,ol{margin:0 0 .8em;padding-left:1.3em}
+li{margin:.25em 0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+/* draft banner */
+.draft{background:var(--pink);color:var(--ink);text-align:center;font-weight:800;font-size:.9rem;padding:6px 12px}
+/* header */
+header.top{position:sticky;top:0;z-index:50;background:rgba(27,38,38,.96);backdrop-filter:blur(6px);border-bottom:2px dashed var(--line)}
+.bar{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:var(--hand);font-size:1.5rem;color:var(--chalk);text-decoration:none;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.brand svg{width:30px;height:38px}
+.brand b{color:var(--pink);font-weight:400}
+nav.main{display:flex;gap:6px;flex-wrap:wrap;flex-basis:100%;order:3;padding-bottom:8px}
+.tools{margin-left:auto}
+nav.main a{font-family:var(--hand);font-size:1.15rem;color:var(--chalk);text-decoration:none;padding:4px 12px;border-radius:999px;border:2px solid transparent}
+nav.main a:hover{border-color:var(--line)}
+nav.main a[aria-current="page"]{background:var(--yellow);color:var(--ink)}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.search{position:relative}
+.search input,.tools select{background:var(--panel);color:var(--chalk);border:2px solid var(--line);border-radius:999px;padding:8px 14px;font:inherit;font-size:.95rem;min-width:0}
+.search input{width:220px}
+.tools select{max-width:210px}
+.results{position:absolute;right:0;top:calc(100% + 6px);width:min(420px,92vw);background:var(--panel);border:2px solid var(--yellow);border-radius:12px;padding:6px;max-height:60vh;overflow:auto;box-shadow:0 12px 30px rgba(0,0,0,.5);z-index:60}
+.results a{display:block;padding:8px 10px;border-radius:8px;color:var(--chalk);text-decoration:none}
+.results a:hover,.results a:focus{background:var(--panel2)}
+.results small{display:block;color:var(--muted)}
+.results .none{padding:10px;color:var(--muted)}
+.menubtn{display:none;background:var(--panel);color:var(--chalk);border:2px solid var(--line);border-radius:999px;padding:8px 14px;font:inherit;font-family:var(--hand);font-size:1.1rem}
+/* pages */
+.page{padding:28px 0 40px}
+.page[hidden]{display:none}
+.hero{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:center;margin-bottom:28px}
+.hero h1 span{color:var(--pink)}
+.lede{font-size:1.15rem;color:var(--chalk)}
+.ned{width:100%;max-width:230px;height:auto;display:block;margin:0 auto}
+.ned-sm{max-width:92px}
+.bubble{position:relative;background:var(--chalk);color:var(--ink);border-radius:18px;padding:12px 16px;font-family:var(--hand);font-size:1.2rem;line-height:1.3;margin-bottom:14px}
+.bubble:after{content:"";position:absolute;bottom:-12px;left:42px;border:12px solid transparent;border-top-color:var(--chalk);border-bottom:0}
+.nedsays{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:end;margin:18px 0}
+.nedsays .bubble{margin:0}
+.nedsays .bubble:after{bottom:14px;left:-12px;border:12px solid transparent;border-right-color:var(--chalk);border-left:0;border-top-color:transparent}
+.sec{margin:36px 0}
+.sec>h2{display:flex;align-items:center;gap:10px}
+.sec>h2:after{content:"";flex:1;border-bottom:2px dashed var(--line)}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+/* cards */
+.card{background:var(--panel);border:2px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.card>header{display:flex;align-items:center;gap:10px;padding:10px 14px;color:var(--ink);font-family:var(--hand);font-size:1.35rem;line-height:1.15}
+.card>header .n{background:var(--ink);color:var(--chalk);border-radius:50%;width:32px;height:32px;display:grid;place-items:center;font-size:1.1rem;flex:none}
+.card .body{padding:14px 16px;flex:1}
+.card .take{background:var(--yellow);color:var(--ink);font-weight:700;padding:10px 16px;font-size:.98rem}
+.c-pink>header{background:var(--pink)}.c-yellow>header{background:var(--yellow)}.c-green>header{background:var(--green)}.c-blue>header{background:var(--blue)}.c-purple>header{background:var(--purple)}
+.c-pink{border-color:var(--pink)}.c-green{border-color:var(--green)}.c-blue{border-color:var(--blue)}.c-purple{border-color:var(--purple)}.c-yellow{border-color:var(--yellow)}
+.card.link{text-decoration:none;color:var(--chalk);transition:transform .15s}
+.card.link:hover{transform:translateY(-3px) rotate(-.4deg)}
+/* sticky + notebook */
+.sticky{background:#fff3a3;color:var(--ink);padding:16px 16px 18px;box-shadow:3px 5px 0 rgba(0,0,0,.35);transform:rotate(-1.4deg);position:relative;font-family:var(--sans);font-weight:600}
+.sticky:before{content:"";position:absolute;top:-9px;left:50%;width:70px;height:18px;margin-left:-35px;background:rgba(255,255,255,.55);transform:rotate(2deg)}
+.sticky h3{color:var(--ink);font-size:1.3rem;margin-bottom:.3em}
+.sticky.pk{background:#ffc2dc;transform:rotate(1.2deg)}.sticky.gn{background:#bff5d6;transform:rotate(-.8deg)}.sticky.bl{background:#bfe6ff;transform:rotate(1.6deg)}.sticky.pu{background:#dccbff;transform:rotate(-1.2deg)}
+.sticky p:last-child,.sticky ul:last-child{margin-bottom:0}
+.sticky .src,.src{display:block;font-size:.78rem;font-weight:700;opacity:.7;margin-top:6px}
+.notebook{background:#fbf8ee;color:var(--ink);padding:26px 18px 16px 52px;position:relative;
+  background-image:repeating-linear-gradient(transparent 0 27px,#9fc5e8 27px 28px);line-height:28px;box-shadow:3px 5px 0 rgba(0,0,0,.35);
+  clip-path:polygon(0 6px,4% 0,9% 6px,14% 1px,20% 6px,26% 0,32% 6px,38% 1px,44% 6px,50% 0,56% 6px,62% 1px,68% 6px,74% 0,80% 6px,86% 1px,92% 6px,97% 0,100% 5px,100% 100%,0 100%)}
+.notebook:before{content:"";position:absolute;left:36px;top:0;bottom:0;border-left:2px solid #ff9db8}
+.notebook h3{color:var(--ink);line-height:1.2;margin-bottom:.2em}
+.notebook ul{padding-left:1.1em;margin:0}.notebook li{margin:0}
+.golden{border:3px solid var(--yellow);border-radius:16px;padding:14px 18px 14px 56px;position:relative;background:rgba(255,228,94,.08);margin:18px 0}
+.golden:before{content:"\2605";position:absolute;left:16px;top:8px;font-size:2rem;color:var(--yellow)}
+.golden b.t{font-family:var(--hand);font-size:1.3rem;color:var(--yellow);display:block}
+.boost{border:2px dashed var(--green);border-radius:14px;padding:14px 18px;background:rgba(98,240,165,.06)}
+.boost h3{color:var(--green)}
+.boost ul{list-style:none;padding:0;margin:0}
+.boost li{padding-left:34px;position:relative;margin:.5em 0}
+.boost li:before{content:"\2713";position:absolute;left:0;top:0;width:24px;height:24px;border:2px solid var(--green);border-radius:6px;color:var(--green);font-weight:800;display:grid;place-items:center;font-size:.95rem;line-height:1}
+.pill{display:inline-block;border-radius:999px;padding:2px 12px;font-weight:800;font-size:.85rem;color:var(--ink);background:var(--green)}
+.pill.y{background:var(--yellow)}.pill.p{background:var(--pink)}.pill.b{background:var(--blue)}.pill.u{background:var(--purple)}
+/* timeline */
+.timeline{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;counter-reset:s;position:relative;padding-top:6px}
+.timeline a{background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:12px 10px;color:var(--chalk);text-decoration:none;position:relative;display:block;transition:transform .15s}
+.timeline a:hover{transform:translateY(-3px)}
+.timeline a .dot{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;color:var(--ink);font-family:var(--hand);font-size:1.2rem;margin-bottom:6px}
+.timeline a b{display:block;font-family:var(--hand);font-weight:400;font-size:1.2rem;line-height:1.15}
+.timeline a span{font-size:.85rem;color:var(--muted);display:block;margin-top:4px;line-height:1.35}
+/* tables */
+.tw{overflow-x:auto;border:2px solid var(--line);border-radius:12px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.95rem}
+th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--panel2);font-family:var(--hand);font-weight:400;font-size:1.1rem;color:var(--yellow);position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+.formula{font-family:var(--hand);font-size:clamp(1.2rem,3vw,1.9rem);text-align:center;background:var(--panel);border:3px dashed var(--pink);border-radius:16px;padding:14px;margin:12px 0}
+.formula b{color:var(--yellow);font-weight:400}
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.flow>div{background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:12px 14px}
+.flow h3{font-size:1.25rem}
+.flow .min{font-family:var(--hand);color:var(--pink);font-size:1.1rem}
+/* star */
+.star{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.star div{background:var(--panel);border-left:6px solid var(--pink);border-radius:8px;padding:10px 12px}
+.star div:nth-child(2){border-color:var(--yellow)}.star div:nth-child(3){border-color:var(--green)}.star div:nth-child(4){border-color:var(--blue)}
+.star b{font-family:var(--hand);font-weight:400;font-size:1.2rem;display:block}
+/* steps */
+.step{display:grid;grid-template-columns:44px 1fr;gap:12px;margin:16px 0}
+.step .no{width:44px;height:44px;border-radius:50%;background:var(--pink);color:var(--ink);display:grid;place-items:center;font-family:var(--hand);font-size:1.5rem}
+.step:nth-child(2n) .no{background:var(--yellow)}.step:nth-child(3n) .no{background:var(--green)}.step:nth-child(4n) .no{background:var(--blue)}
+.step h3{margin-bottom:.15em}
+.gq{background:rgba(187,146,255,.15);border-left:5px solid var(--purple);padding:8px 12px;border-radius:6px;margin:8px 0}
+.gq b{color:var(--purple)}
+.res{font-size:.92rem;color:var(--muted)}
+/* misc */
+.crumbs{font-size:.95rem;color:var(--muted);margin-bottom:10px}
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-block;background:var(--yellow);color:var(--ink);font-family:var(--hand);font-size:1.2rem;border:0;border-radius:999px;padding:8px 20px;text-decoration:none;cursor:pointer}
+.btn.alt{background:var(--panel);color:var(--chalk);border:2px solid var(--line)}
+.btn.sm{font-size:1rem;padding:5px 14px}
+.copyl{font-weight:700}
+dl.gl{margin:0}
+.gl-item{background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0}
+.gl-item dt{font-family:var(--hand);font-size:1.3rem;color:var(--green)}
+.gl-item dd{margin:2px 0 0}
+.gl-item .src{color:var(--muted)}
+details.faq{background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0}
+details.faq summary{cursor:pointer;font-weight:800}
+details.faq[open]{border-color:var(--blue)}
+.field{display:grid;gap:4px;margin:10px 0}
+.field label{font-weight:800}
+.field input,.field textarea,.field select{background:var(--board2);color:var(--chalk);border:2px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{display:flex;align-items:center;gap:6px;background:var(--board2);border:2px solid var(--line);border-radius:999px;padding:4px 12px;cursor:pointer;font-weight:600}
+.out{background:#fbf8ee;color:var(--ink);padding:12px 14px;border-radius:10px;white-space:pre-wrap;font-family:var(--sans)}
+.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,40%{box-shadow:0 0 0 4px var(--yellow)}100%{box-shadow:0 0 0 0 transparent}}
+.tree{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem;background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:14px;line-height:1.7;overflow-x:auto;white-space:pre}
+.tree .ci{color:var(--green)}.tree .in{color:var(--blue)}
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.calc .big{font-family:var(--hand);font-size:2.2rem;color:var(--yellow)}
+footer.site{border-top:2px dashed var(--line);padding:24px 0;color:var(--muted);font-size:.9rem}
+/* stuck bar */
+#stuck{position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--yellow);color:var(--ink);border-top:4px solid var(--pink);box-shadow:0 -8px 24px rgba(0,0,0,.45)}
+#stuck .in{display:flex;align-items:center;gap:14px;min-height:var(--stuckh);padding:8px 0}
+#stuck .lab{font-family:var(--hand);font-size:1.7rem;background:var(--ink);color:var(--yellow);border-radius:12px;padding:0 14px;line-height:44px;flex:none;transform:rotate(-2deg)}
+#stuck p{margin:0;font-weight:700;font-size:.98rem;line-height:1.35}
+#stuck .more{display:block;font-weight:600;font-size:.85rem;margin-top:2px}
+#stuck button{margin-left:auto;background:var(--ink);color:var(--chalk);border:0;border-radius:999px;padding:6px 14px;font:inherit;font-weight:800;cursor:pointer;flex:none}
+#stuck.min .more{display:none}
+@media (min-width:721px){#stuck button{display:none}}
+@media (max-width:980px){
+  .g3,.g4{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:repeat(2,1fr)}
+  .flow,.star{grid-template-columns:1fr 1fr}
+  .hero{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  body{font-size:16px}
+  header.top{position:static}
+  [id]{scroll-margin-top:16px}
+  .menubtn{display:inline-block;margin-left:auto}
+  nav.main{display:none;flex-basis:100%;order:3}
+  nav.main.open{display:flex}
+  .tools{flex-basis:100%;order:2}
+  .search{flex:1}.search input{width:100%}
+  .g2,.g3,.g4,.flow,.star,.timeline{grid-template-columns:1fr}
+  .nedsays{grid-template-columns:70px 1fr}
+  .golden{padding-left:50px}
+  #stuck .lab{font-size:1.3rem;line-height:36px;padding:0 10px}
+  #stuck p{font-size:.88rem}
+  #stuck .more{display:none}
+  #stuck.open .more{display:block}
+  :root{--stuckh:58px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="draft" id="draftbar" hidden>DRAFT for review. Not yet approved for fellows.</div>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#start" aria-label="Ned's Capstone Survival Guide, home"><span id="brandned" aria-hidden="true"></span><span>Ned's <b>Capstone</b> Survival Guide</span></a>
+    <button class="menubtn" id="menubtn" aria-expanded="false" aria-controls="mainnav">Menu</button>
+    <nav class="main" id="mainnav" aria-label="Guide sections"></nav>
+    <div class="tools">
+      <div class="search" role="search">
+        <input id="q" type="search" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off">
+        <div class="results" id="results" hidden></div>
+      </div>
+      <select id="stuckmenu" aria-label="I'm stuck on"></select>
+    </div>
+  </div>
+</header>
+<main id="main" tabindex="-1"><div class="wrap" id="pages"></div></main>
+<footer class="site"><div class="wrap">
+  <p>This capstone is a fictional learning exercise. It uses public information about a real game, but it does not represent work done for, requested by or endorsed by Flood-It, LabPixies, Google or any other company named here. The engagement, the agency, the client contact and the budget are invented for teaching purposes.</p>
+  <p>This guide is a reference only. It saves nothing, so copy anything you want to keep into your pod's documents. The FA26 Capstone Brief is the source of truth if anything here seems unclear.</p>
+</div></footer>
+<div id="stuck" role="region" aria-label="Help path">
+  <div class="wrap in">
+    <span class="lab">Stuck?</span>
+    <p>Ask your captain first. Still stuck? Bring it to the whole cohort GChat or a senior captain.
+      <span class="more">Captains help with logistics and with navigating the work. They never write the work or give you the answer.</span></p>
+    <button id="stuckbtn" aria-expanded="false">More</button>
+  </div>
+</div>
+<script>
+/* ===== Settings ===== */
+const SHOW_DRAFT_BANNER = false; /* approved for fellows; set to true to show the draft banner again */
+
+/* ===== Make-a-copy links (all Google files open as "make a copy") ===== */
+const L = {
+  brief:'https://docs.google.com/document/d/1WcvskBJnOYvuuHizfyBmI8HTVSaqfy9G4JdcCD1Wl0M/copy',
+  rice:'https://docs.google.com/document/d/1tekBs0ZYGh2gEBKHO-dJBo0nDCzd-H3Zd8waENs0YSQ/copy',
+  agenda:'https://docs.google.com/document/d/1xdL-uEneattB_jjl0TcR0N-qMOw0MMFUhvViJ7sxHqo/copy',
+  charter:'https://docs.google.com/document/d/1Ph0WHWt7A4R2_Y9AoMr75_sVc2OupMeBgwgYh58SF-g/copy',
+  ai:'https://docs.google.com/document/d/1D1ko0K02x6nWGtC6WEmIgyql_rtuO782RR0oQ3Z-VnY/copy',
+  peer:'https://docs.google.com/document/d/1zG6PSn-_aiz0v2zK3NT6wo0caFRvoYm4lGJlo-Pakko/copy',
+  deck:'https://docs.google.com/presentation/d/1PgH5cgtiODcEXayl_DPaXy8jqfRRDyPjRk7c7Mq1J7o/copy',
+  project:'https://drive.google.com/open?id=1ck_Td9GaXf-BVnhO_FcxDTN-tC7RM2FwIqaVUwK4kUU&usp=drive_copy',
+  n1:'https://docs.google.com/document/d/12gav2TquP9x3sHTquJIAxpAfVVYTCnACQ3eovcRZncI/copy',
+  n2:'https://docs.google.com/document/d/1-2HlHOj98cHW52cmFuwRR3FgsG7T-3iZ5J-_-ysctH0/copy',
+  n3:'https://docs.google.com/document/d/1hg06JIDi6EsLYYojIIQI7ztKOHRFi9NG9LAcrTWm3uM/copy',
+  n4:'https://docs.google.com/document/d/1LHcXPPLNFXwI1T2I6RseQWHVYfZBM2R4s3yA-079sS0/copy',
+  n5:'https://docs.google.com/document/d/1wT2x6ipF3kHvwuBhgE4BwawXNS5Pf9KX5fEp4VTjJjY/copy',
+  n6:'https://docs.google.com/document/d/1IASyNH0a2KmXKL2JdrCxMDObPdiWxMJ4eIeoL1Rp898/copy'
+};
+const A = (u,t)=>`<a href="${u}" target="_blank" rel="noopener">${t}</a>`;
+const CP = (u,t)=>`<a class="copyl" href="${u}" target="_blank" rel="noopener">${t} (make a copy)</a>`;
+
+/* ===== Ned (original character: a friendly stub of chalk) ===== */
+const ned = (cls='')=>`<svg class="ned ${cls}" viewBox="0 0 140 180" role="img" aria-label="Ned, a friendly stub of chalk with round blue glasses and a pink scarf, waving">
+<g stroke-linecap="round" stroke-linejoin="round">
+<path d="M26 40l5-8 7 4 6-7 7 6 6-5 6 6 7-4 5 7" fill="none" stroke="#fff" stroke-width="3" opacity=".0"/>
+<ellipse cx="70" cy="170" rx="30" ry="5" fill="rgba(0,0,0,.28)"/>
+<rect x="38" y="24" width="64" height="116" rx="20" fill="#f4f1e6" stroke="#d6d0bd" stroke-width="3"/>
+<path d="M44 34c6-8 46-8 52 0" fill="none" stroke="#fff" stroke-width="4" opacity=".9"/>
+<path d="M92 50c4 20 3 52 0 80" fill="none" stroke="#d6d0bd" stroke-width="5" opacity=".7"/>
+<circle cx="56" cy="68" r="12" fill="#fff" stroke="#63c9ff" stroke-width="3.5"/>
+<circle cx="84" cy="68" r="12" fill="#fff" stroke="#63c9ff" stroke-width="3.5"/>
+<path d="M68 67h4" stroke="#63c9ff" stroke-width="3.5"/>
+<circle cx="58" cy="69" r="4.2" fill="#1b2626"/><circle cx="82" cy="69" r="4.2" fill="#1b2626"/>
+<circle cx="59.6" cy="67.4" r="1.4" fill="#fff"/><circle cx="83.6" cy="67.4" r="1.4" fill="#fff"/>
+<path d="M58 92q12 12 24 0" fill="none" stroke="#1b2626" stroke-width="3.5"/>
+<circle cx="47" cy="88" r="5" fill="#ff6fae" opacity=".55"/><circle cx="93" cy="88" r="5" fill="#ff6fae" opacity=".55"/>
+<rect x="36" y="108" width="68" height="17" rx="8.5" fill="#ff6fae" stroke="#e24a8f" stroke-width="2.5"/>
+<path d="M92 120l10 24 12-6-8-20z" fill="#ff6fae" stroke="#e24a8f" stroke-width="2.5"/>
+<path d="M38 100q-18 -8 -24 -30" fill="none" stroke="#f4f1e6" stroke-width="7"/><circle cx="13" cy="66" r="7" fill="#f4f1e6"/>
+<path d="M102 104q12 6 16 20" fill="none" stroke="#f4f1e6" stroke-width="7"/><circle cx="119" cy="127" r="7" fill="#f4f1e6"/>
+<path d="M56 140v18M84 140v18" stroke="#f4f1e6" stroke-width="8"/>
+<ellipse cx="52" cy="162" rx="12" ry="6" fill="#63c9ff"/><ellipse cx="88" cy="162" rx="12" ry="6" fill="#63c9ff"/>
+<path d="M118 28l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#ffe45e"/>
+<path d="M18 36l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#62f0a5"/>
+<path d="M124 84l2 4 4 2-4 2-2 4-2-4-4-2 4-2z" fill="#bb92ff"/>
+</g></svg>`;
+const nedSays = (txt)=>`<div class="nedsays"><div aria-hidden="true">${ned('ned-sm')}</div><div class="bubble"><span class="sr" style="position:absolute;left:-999px">Ned says: </span>${txt}</div></div>`;
+
+/* ===== Small builders ===== */
+const card=(n,color,title,body,take='')=>`<article class="card c-${color} sx" data-t="${title}"><header>${n!==''?`<span class="n">${n}</span>`:''}<h3 style="margin:0;font-size:inherit">${title}</h3></header><div class="body">${body}</div>${take?`<div class="take">${take}</div>`:''}</article>`;
+const sticky=(color,title,body,src='')=>`<aside class="sticky ${color} sx" data-t="${title}"><h3>${title}</h3>${body}${src?`<span class="src">${src}</span>`:''}</aside>`;
+const notebook=(title,items)=>`<aside class="notebook sx" data-t="${title}"><h3>${title}</h3><ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul></aside>`;
+const golden=(body,title='Golden Reminder')=>`<div class="golden sx" data-t="${title}"><b class="t">${title}</b>${body}</div>`;
+const boost=(title,items)=>`<div class="boost sx" data-t="${title}"><h3>${title}</h3><ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`;
+const tbl=(title,heads,rows)=>`<div class="tw sx" data-t="${title}"><table><thead><tr>${heads.map(h=>`<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((c,i)=>i===0?`<th scope="row" style="background:none;position:static;font-family:var(--sans);font-size:1rem;color:var(--chalk);font-weight:800">${c}</th>`:`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+const sec=(id,title,inner)=>`<section class="sec" id="${id}"><h2>${title}</h2>${inner}</section>`;
+const ul=(a)=>`<ul>${a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+const COL=['pink','yellow','green','blue','purple'];
+
+/* ===== Reflection prompts (same every night) ===== */
+const REFLECT=[
+ 'What I did tonight, as one STAR line (Situation, Task, Action, Result).',
+ 'Which COOP competency my work showed.',
+ 'How I showed up for my pod.',
+ 'How I used AI, logged in Part 5 of the AI Disclosure Statement (date, user, tool, use case).'
+];
+
+/* ===== The five COOP competencies (names as given in the Brief) ===== */
+const COMP=['Initiative and Results-Driven','Collaboration','Adaptability and Managing Change','Workload Management','Resource Management'];
+
+/* ===== Pods ===== */
+const PODS=[
+ {n:1,color:'pink',ch:'Paid Acquisition',scope:'Paid search and paid social, including app install campaigns',q:'Where should Flood-It spend on advertisements for the best return, and with what targeting, creative and budget?',
+  bm:'Cost per install (CPI) for puzzle games is about $3.00 on iOS and $2.00 on Android (FoxData 2026, citing Business of Apps).',
+  res:[['Google Ads: About App campaigns','How app install advertising works. Platform guidance, not performance data.'],['Liftoff 2025 Casual Gaming Apps Report','Casual-game cost and return figures. Casual-game costs run lower than puzzle-game costs, and the report does not replace your benchmark.'],['Apple Ads, formerly Apple Search Ads (9to5Mac, April 2025)','The service\'s current name. Reliable for the name only.']]},
+ {n:2,color:'yellow',ch:'SEO and Content, including app store optimization (ASO)',scope:'Being found without paying for each visitor',q:'Where are the biggest gaps in how people find Flood-It in search and in the app stores, and what would close them?',
+  bm:'About 65% of App Store downloads follow a search (Apple).',
+  res:[['Apple: App Store product page','What a strong App Store page contains. Check each element against Flood-It\'s page.'],['Apple: Custom product pages','Store pages matched to advertising campaigns. Explains an option; shows no results.'],['Google Play: Store listing best practices','What a strong Google Play listing contains. Check each element against Flood-It\'s listing.'],['Google Search Central: SEO Starter Guide','Basics of web SEO. Ask whether Flood-It has a web presence.']]},
+ {n:3,color:'green',ch:'Social and Community',scope:'Building an audience on social platforms, working with creators and hosting player communities',q:'What social and community approach would build an audience that installs the game and keeps playing, and how should it work with paid acquisition?',
+  bm:'Only about 20% of casual games use influencers (Business of Apps).',
+  res:[['IZEA: Influencer marketing for mobile games','How studios work with creators. Written by a company that sells this service, so it may favor the channel.']]},
+ {n:4,color:'blue',ch:'Email, Retention and Lifecycle',scope:'The messages a player receives after installing, mostly push notifications and in-app messages',q:'What happens after install, where do players drop off, and what lifecycle program would keep them playing longer?',
+  bm:'Median day-7 retention is about 4% (GameAnalytics 2025).',
+  res:[['GameAnalytics 2025 Mobile Gaming Benchmarks','Retention benchmarks. Find day-7 retention. The Brief points to a third-party copy of the report.'],['OneSignal: Push messaging for game developers','Message types, timing and permission. Written by a company that sells this service, so it may favor the channel.'],['Google Cloud: Churn prediction using Flood-It data','How early behavior can predict which players stop. Uses 2018 data; a demonstration.']]}
+];
+
+/* ===== Night pages ===== */
+const NIGHTS=[
+{id:'intro-night',nav:'Intro',label:'Introduction Night',title:'Introduction Night: set up your pod',
+ blurb:'Pods form, elect Pod leads and start the Team Charter and AI Disclosure Statement.',
+ golden:'Your job is to judge your channel fairly, not to win budget for it.',
+ learn:['Explain how free mobile games make money and why keeping players matters as much as finding them.','Describe what a digital strategy team does and the four marketing channels Flood-It is weighing.','Use the core measures of the industry, such as cost per install and day-7 retention, in plain terms.'],
+ flow:[['Capstone context session','The industry, the functional area, your firm and your role, the client, and core ideas and definitions.'],['Project kickoff','The engagement, the options and the positions, how you will decide, how you will research, roles, deliverables and templates, the timeline and how your work is graded.'],['Pod setup','Four short steps, below.']],
+ steps:[
+  {t:'Elect your Pod lead',min:'Five minutes',d:'Choose the fellow who will be your captain\'s main contact and confirm ownership. One Pod lead per pod.',q:'',res:'See <a href="#pod-lead">the Pod lead\'s seven duties</a>.'},
+  {t:'Start the Team Charter',min:'Fifteen minutes',d:'Copy the template, then fill in Part 1 and start Parts 2 and 3.',q:'',res:CP(L.charter,'Pod Team Charter')},
+  {t:'Start the AI Disclosure Statement',min:'Ten minutes',d:'Copy the template and begin Part 1: project details and ownership.',q:'',res:CP(L.ai,'AI Disclosure Statement')},
+  {t:'Create the running agenda',min:'Five minutes',d:'As a cohort, create the running agenda and name the first Notetaker.',q:'',res:CP(L.agenda,'Running Agenda')+' (one copy per cohort)'}
+ ],
+ due:['Your Team Charter, started.','The running agenda, created for the cohort, with the first Notetaker named.','AI Disclosure Statement: Parts 1 to 4 are due by the end of Night 1.'],
+ career:null,
+ discuss:'From the Introduction deck: how do the capstone competencies show up for you in your current roles? Why might COOP\'s employer partners consider these to be the main drivers of evaluating professional readiness? The deck groups them as industry and organizational awareness, technical foundations, collaborative competencies and AI professionalism.',
+ tips:[['Files made before Night 3 start as Google Docs shared with your captain and move into the Project Folder on Night 3.','Introduction deck, slide 34'],['Debating findings and reviewing drafts happen in pod time, not in the Daily Standup.','Introduction deck, slide 35']],
+ mistakes:[['A plan that recommends everything does not answer the question. A forcing question makes you choose.','Brief, section 6'],['Treating the job as winning budget for your channel. Your pod\'s job is to judge its channel fairly.','Brief, section 8']],
+ stuck:['whos-who','pod-lead','ownership'],link:null},
+
+{id:'night-1',nav:'Night 1',label:'Night 1',title:'Capstone Night 1: Start the audit',
+ blurb:'Check both store pages, open GA4, write the first audit rows. AI Disclosure Parts 1 to 4.',
+ why:'Flood-It\'s head of marketing needs one coordinated team, starting from an accurate picture of the game\'s marketing today. An agency without clear ownership misses deadlines. In plain terms, tonight you confirm who does what and start recording what Flood-It\'s marketing looks like today.',
+ star:['Your pod owns one channel, and no one has yet recorded what Flood-It\'s marketing looks like today.','Start the Preliminary Discovery and finish Parts 1 to 4 of the AI Disclosure Statement.','Check both store pages, take a first look at GA4, write the first audit rows and assign the rest.','First audit rows written with dates and sources; Parts 1 to 4 complete.'],
+ golden:'Store values change at any time, so the date is part of the fact.',
+ standup:['Your pod picks tonight\'s pod rep.','Deliverable status: the Team Charter and AI Disclosure Statement are started; the Preliminary Discovery has not started.','Progress: one or two sentences on what your pod knows about its channel so far.','Tonight\'s goal: Parts 1 to 4 of the AI Disclosure Statement, and the Discovery started.'],
+ where:'Your pod has started its Team Charter and owns one of four channels.',
+ done:['Parts 1 to 4 of the AI Disclosure Statement are complete, with an owner for every piece of work.','The Discovery has its header and purpose paragraph.','The first audit rows, starting with both store pages, are written with the date checked.'],
+ steps:[
+  {t:'Complete Parts 1 to 4 of the AI Disclosure Statement',d:'Open your pod\'s copy. Part 1 records project details and who owns which piece of work; Part 2 your ideas for using AI, each ranked 0 to 10; Part 3 your AI toolkit; Part 4 five agreements on how you will check AI output and use it ethically. Make Part 1 match the ownership in Part 2 of your Team Charter. The Pod lead confirms the owners.',q:'Who owns each piece of work, and who is the backup?',res:'<a href="#ai-log">AI Disclosure Statement parts</a> and <a href="#ownership">ownership examples</a>.'},
+  {t:'Set up the Discovery',d:'Create it as a Google Doc shared with your captain. Write the header with the GA4 date range July 1 to September 30, 2026, which every pod uses, and a purpose paragraph that names your channel and your pod question.',q:'What does your pod need to learn before it can score its channel?',res:'The <a href="#discovery">seven parts of the Discovery</a> and your <a href="#pods">pod question</a>.'},
+  {t:'Check both store pages',d:'Open Flood-It on the App Store and Flood-It on Google Play. Record what exists today, with the date checked, as audit rows. Store values change at any time, so the date is part of the fact.',q:'What is the difference between a rating and the number of ratings behind it?',res:'<a href="#poe-audit">P-O-E audit columns</a>. Find the store links in the Brief\'s Resources list.'},
+  {t:'Take a first look at GA4 and divide the remaining rows',d:'Open the Flood-It GA4 demo property and go to Reports, Reports snapshot with the date range set. A menu path is the sequence of menus that leads to a report; record it. Then list the other assets your audit needs and assign each to a fellow.',q:'Which of Flood-It\'s assets are paid, which are owned and which are earned?',res:'<a href="#ga4">GA4 reports and menu paths</a>.'}
+ ],
+ deliv:[['AI Disclosure Statement','Parts 1 to 4 complete; owners named'],['Preliminary Discovery','Header, purpose paragraph and first audit rows written']],
+ due:['AI Disclosure Statement Parts 1 to 4, by the end of tonight.','Your assigned audit rows, each with a date checked and a source, before Night 2.','Your pod\'s row loaded for Night 2.'],
+ career:'In an agency, people who were not in the room review a strategist\'s work. What makes work easy for someone else to trust?',
+ share:'Two or three pods share one thing they learned from the store pages.',
+ tips:[['Store values change at any time, so the date is part of the fact.','Night 1 guide, step 3'],['Read the rating with its count, and record the date checked.','Brief, section 11'],['A menu path is the sequence of menus that leads to a report. Record it.','Night 1 guide, step 4'],['Make Part 1 of the AI Disclosure Statement match the ownership in Part 2 of your Team Charter.','Night 1 guide, step 1']],
+ mistakes:[['Stating a store rating, rating count, update date, price or social account as a fixed fact. They change at any time, so record each with the date you checked it.','Brief, section 3'],['Leaving a piece of work without a clear owner. An agency without clear ownership misses deadlines.','Night 1 guide'],['Writing an audit row with no date checked or no source.','Night 1 guide, What is due']],
+ stuck:['ga4','poe-audit','discovery'],link:'n1'},
+
+{id:'night-2',nav:'Night 2',label:'Night 2',title:'Capstone Night 2: Read the evidence and score',
+ blurb:'Read four GA4 reports, your benchmark and competitors. Discovery and draft scorecard due.',
+ why:'The client pays for evidence, not opinion. A channel recommendation rests on first-party analytics, published benchmarks and one fair method for comparing channels. In plain terms, tonight you gather the numbers, check where they come from and agree how you will score your channel.',
+ star:['Your audit has started, but the evidence is incomplete and no score exists yet.','Finish the Preliminary Discovery and write a first-pass RICE scorecard.','Read four GA4 reports, your benchmark and three to five competitors, then decide how you\'ll rank the channels.','A complete Discovery with a draft scorecard, due tonight.'],
+ golden:'Cite your pod\'s benchmark with its source and year every time you use it.',
+ standup:['Your pod picks tonight\'s pod rep, someone who has not done it yet.','Deliverable status: Discovery (how many audit rows, which parts are done); AI Disclosure Statement (Parts 1 to 4 complete, Part 5 entries so far).','Progress: one or two sentences on what your audit has covered.','Tonight\'s goal: the Discovery complete with a draft scorecard, and who finishes which part.'],
+ where:'Your Discovery has a header, a purpose paragraph and some audit rows.',
+ done:['All seven parts of the Discovery are present.','The audit has 10 to 15 rows with reasons and sources.','There are at least two GA4 observations.','The sources table and questions are complete.','A scorecard marked "Draft" is written.'],
+ steps:[
+  {t:'Read the four GA4 reports',d:'In the Flood-It GA4 demo property, use Reports snapshot, User acquisition, Events and Retention. Set July 1 to September 30, 2026 first. The data is deliberately scrambled and cannot be exported, so read patterns, not exact values. Write at least two observations in the four-part format.',q:'Could someone find this again from your menu path and date range?',res:'<a href="#ga4">The four reports and menu paths</a> and <a href="#observations">the four-part observation format</a>.'},
+  {t:'Read your pod\'s benchmark and resources',d:'A benchmark is a published industry figure used for comparison. Cite it with its source and year every time.',q:'What kind of game, platform and year does each figure describe, and does it fit Flood-It?',res:'<a href="#benchmarks">Pod benchmarks and resources</a>.'},
+  {t:'Check three to five competitors',d:'Search "color flood" on both stores and compare listings, not total downloads. Record each with the date checked.',q:'What does a well-maintained listing in this category look like?',res:''},
+  {t:'Finish the sources table and questions',d:'Label each source quantitative (how much, how many) or qualitative (why, how), and defend it. Then write three to five questions to answer next.',q:'Which of your numbers come from GA4, which are benchmarks and which are assumptions?',res:'<a href="#sources">Source rules</a>.'},
+  {t:'Decide how you\'ll rank the channels',d:'Read the RICE anchors as a pod. Agree and write down how each criterion applies to your channel, then write a scorecard marked "Draft".',q:'What would Confidence of 100% require for your channel?',res:'<a href="#rice">The RICE decoder</a> and <a href="#write-a-score">how to write a score</a>.'}
+ ],
+ deliv:[['Preliminary Discovery','Complete, all seven parts, with the draft scorecard'],['AI Disclosure Statement','Part 5 entries added by every fellow who used AI']],
+ due:['The Preliminary Discovery, complete with its draft scorecard and shared with your captain, by the end of tonight.','Your pod\'s row loaded for Night 3.'],
+ career:'Marketing analysts are often asked "where did that number come from?" How would you answer that in a job interview using tonight\'s work?',
+ share:'Two or three pods share one thing they learned from GA4 or their benchmark.',
+ tips:[['Set July 1 to September 30, 2026 first, so the four pods stay comparable.','Brief, section 11'],['The data is scrambled on purpose. Read patterns, not exact values, and describe them in observation language.','Night 2 guide, step 1'],['Compare competitor listings, not total downloads, and record the date checked.','Night 2 guide, step 3'],['Ask of every figure what kind of game, platform and year it describes.','Brief, section 11']],
+ mistakes:[['Quoting exact GA4 values. Google scrambles the data on purpose, so describe what you see in words.','Brief, section 3'],['Leaning on a benchmark that describes a different kind of game. Confidence falls when a benchmark does not fit.','Brief, section 9'],['Giving a number with no label. Every number is a GA4 observation, a benchmark with its source and year, or an assumption, with its date or period.','Brief, section 11']],
+ stuck:['ga4','observations','sources','rice'],link:'n2'},
+
+{id:'night-3',nav:'Night 3',label:'Night 3',title:'Capstone Night 3: Set the house standards and align',
+ blurb:'Business Communications deck, files into the Project Folder, Team Alignment.',
+ why:'Clients judge an agency partly on how it communicates: files where they should be, sensible names, and a memo a busy head of marketing can read in five minutes. In plain terms, tonight you learn how professional teams file and present work, make sure every number has a source and check how your pod is working together.',
+ star:['Your Discovery is done, but files are scattered and some scores lack evidence.','Learn the house standards, file your work and check how your pod works together.','Take in the Business Communications deck, move files into the Project Folder, add evidence to every score and hold Team Alignment.','Files correctly named and filed, a sourced scorecard, and Team Alignment recorded in Part 5 of the Team Charter.'],
+ golden:'Every score has a number, one evidence sentence and a source.',
+ standup:['Your pod picks tonight\'s pod rep, someone who has not done it yet.','Deliverable status: Discovery (submitted or not); AI Disclosure Statement (Part 5 up to date).','Progress: one or two sentences on where your draft scorecard stands.','Tonight\'s goal: files moved into the Project Folder, evidence for every score and Team Alignment held.'],
+ where:'Your Discovery is complete and you have a draft scorecard.',
+ done:['Your pod\'s files are in the Project Folder with the right names.','Every score has a number, one evidence sentence and a source.','Part 5 of your Team Charter is recorded.'],
+ steps:[
+  {t:'Take in the FA26 Capstone Business Communications deck',d:'It covers folders, sharing and naming, memo and presentation standards, timing, and AI in depth.',q:'What would make a senior person trust a memo within the first minute?',res:''},
+  {t:'Move your files into the Project Folder',d:'Internal Resources holds the deck, the running agenda and one subfolder per pod with that pod\'s Discovery, AI Disclosure Statement and Team Charter. Client-Facing Resources holds only the memo. Your captains set the sharing and permissions. Name pod files [Pod #]_[Deliverable]_v[#], for example Pod2_Discovery_v2, and cohort files Cohort_[Deliverable]_v[#].',q:'Could someone outside your pod find your latest Discovery in under a minute?',res:'<a href="#files">Project Folder and file names</a>.'},
+  {t:'Complete the evidence for every score',d:'Turn the draft into a full RICE scorecard. Each score has three parts: the number, one evidence sentence and the source.',q:'What evidence would move that score down by one? Does your Effort score count work on the game itself?',res:'<a href="#write-a-score">How to write a score</a>.'},
+  {t:'Hold Team Alignment',d:'At the end of the working block, hold Team Alignment, your pod\'s first peer review round, and record it in Part 5 of the Team Charter. It is about how the pod works together: how the work and roles are going, what each person owns next and what to change for Nights 4 to 6. It is not about personal matters. Your captain may add input.',q:'Who is carrying too much, and who has room?',res:CP(L.charter,'Team Charter')}
+ ],
+ deliv:[['Preliminary Discovery','In your pod\'s subfolder, named correctly'],['AI Disclosure Statement','In your pod\'s subfolder; Part 5 up to date'],['RICE scorecard','Every score has a number, an evidence sentence and a source'],['Team Charter','In your pod\'s subfolder; Part 5 Team Alignment recorded']],
+ due:['Nothing is due tonight.','Before Night 4: your full scorecard is ready for another pod to challenge, and your pod\'s row is loaded.'],
+ career:'Agencies test a recommendation internally before a client sees it. Why do firms work this way, and what would you want a reviewer to ask about your channel?',
+ share:'Two or three pods share one standard from the Business Communications deck they will apply.',
+ tips:[['Name pod files [Pod #]_[Deliverable]_v[#], for example Pod2_Discovery_v2, and cohort files Cohort_[Deliverable]_v[#].','Night 3 guide, step 2'],['Use the score pattern: "[Criterion] [score]. [One sentence of evidence]. Source: [...]".','Night 3 guide, step 3'],['Team Alignment is about how the pod works together, not personal matters.','Night 3 guide, step 4']],
+ mistakes:[['A score without an evidence sentence and a source is not finished.','Brief, section 10'],['Leaving files scattered instead of in the Project Folder with the right names.','Night 3 guide'],['Putting anything but the memo in Client-Facing Resources.','Brief, section 12']],
+ stuck:['files','write-a-score','ownership'],link:'n3'},
+
+{id:'night-4',nav:'Night 4',label:'Night 4',title:'Capstone Night 4: Challenge the scores and draft your sections',
+ blurb:'Challenge scores, draft deck and memo sections.',
+ why:'Before an agency puts its name on a recommendation, colleagues outside the team challenge the numbers. A score that holds up is one the client can rely on when it commits its budget. In plain terms, tonight another pod questions your scores, and you start writing what the committee and the client will read.',
+ star:['Each pod has a sourced scorecard that no one outside the pod has tested.','Test the scores and draft your pod\'s sections of the deck and the memo.','Challenge another pod\'s scorecard, answer challenges in writing, draft both sections.','A revised scorecard and drafted pod sections in the cohort files.'],
+ golden:'Change a score only if there is new evidence.',
+ standup:['Your pod picks tonight\'s pod rep, someone who has not done it yet.','Deliverable status: scorecard (complete with evidence or not); deck section and memo section (not started); AI Disclosure Statement (Part 5 up to date).','Progress: one or two sentences on your scorecard and your channel\'s likely position.','Tonight\'s goal: which pod you will challenge, and who drafts the deck section and the memo section.'],
+ where:'Your scorecard is complete, with evidence and a source for every score. From tonight you work toward two graded targets: the deck and the memo. Your channel also needs a position for 2027. Only Fund counts as one of the two channels.',
+ done:['Every challenge produced a written change or a written defense.','Your scorecard is revised.','Your pod\'s section of the deck and section of the memo are drafted in the cohort files.'],
+ steps:[
+  {t:'Challenge another pod\'s scorecard',d:'Exchange scorecards with the pod agreed in the Daily Standup. For each score, ask where the number came from and whether the anchor was applied correctly.',q:'Is this score supported by the evidence sentence, or only by enthusiasm for the channel?',res:'<a href="#rice">The RICE anchors</a>.'},
+  {t:'Respond and revise',d:'For each challenge to your own scorecard, write either the change you made or your defense. Change a score only if there is new evidence.',q:'What new evidence would justify changing this score?',res:''},
+  {t:'Draft your section of the deck (the Internal Strategy Proposal)',d:'Your section covers your channel, Discovery highlights, your scorecard with evidence and your position. Follow the presentation standards from the Business Communications deck.',q:'If Flood-It funded only your channel, what would your scorecard alone justify?',res:'<a href="#positions">Positions</a> and <a href="#deck-outline">the deck outline</a>.'},
+  {t:'Draft your section of the memo (the Channel Investment Memo)',d:'Write one short findings paragraph with evidence and sources, one line of evidence per score, and your position with its terms or a revisit condition.',q:'Is your revisit condition something the client could actually observe?',res:'<a href="#horizon">Revisit conditions</a> and <a href="#memo-outline">the memo outline</a>.'},
+  {t:'Start combining',d:'The Pod leads set up the cohort deck and memo files and agree the structure for Night 5.',q:'Does each pod\'s section use the same terms and the same scorecard format?',res:''}
+ ],
+ deliv:[['RICE scorecard','Revised, with a written change or defense for every challenge'],['Deck section','Drafted in the cohort deck'],['Memo section','Drafted in the cohort memo'],['AI Disclosure Statement','Part 5 up to date']],
+ due:['Your pod\'s deck section and memo section, drafted in the cohort files, by the end of tonight.','Before Night 5: your pod names its speaker for the cohort decision, and your pod\'s row is loaded.'],
+ career:'On a marketing team, you will defend your numbers to people who know more than you. How do you take a challenge without giving in or getting defensive?',
+ share:'Two or three pods share one change they made after being challenged.',
+ tips:[['Change a score only if there is new evidence.','Night 4 guide, step 2'],['A pod that recommends deferring its own channel, with evidence, can earn full marks.','Brief, section 7'],['A revisit condition is an observable result that would lead Flood-It to reconsider the channel in 2027.','Brief, section 6'],['Use the same terms and the same scorecard format in every pod\'s section.','Night 4 guide, step 5']],
+ mistakes:[['Defending a score with enthusiasm for the channel instead of its evidence sentence.','Night 4 guide, step 1'],['"When the time is right" is not a revisit condition, because no one can observe it.','Brief, section 6'],['Changing a score with no new evidence.','Night 4 guide, step 2']],
+ stuck:['rice','positions','horizon','memo-outline'],link:'n4'},
+
+{id:'night-5',nav:'Night 5',label:'Night 5',title:'Capstone Night 5: Decide as a cohort',
+ blurb:'Decide as a cohort, combine the deck and memo, get captain sign-off.',
+ why:'Every agency holds an internal review before a recommendation leaves the building. Tonight the agency agrees one position on budget allocation, channel timing and success measures. In plain terms, the four pods agree what the cohort will tell Flood-It, and the memo becomes final.',
+ star:['Four pods have four tested scorecards and four draft sections.','Agree one recommendation and combine the work into one deck and one memo.','The Pod leads lead the cohort decision, pods revise their sections, captains sign off.','A combined draft deck, a memo ready to be final before Night 6, and every pod signed off.'],
+ golden:'Your recommendation names exactly two channels as Fund. A plan that funds three channels does not answer the question.',
+ standup:['Your pod picks tonight\'s pod rep, someone who has not done it yet.','Deliverable status: Discovery and AI Disclosure Statement (ready for sign-off or not); deck section and memo section (in the cohort files or not).','Progress: one or two sentences on your pod\'s position and main reason.','Tonight\'s goal: the cohort decision, the combined draft and your captain\'s sign-off, with the name of your speaker.'],
+ where:'Each pod has a tested scorecard and draft sections of the deck and the memo.',
+ done:['The cohort has chosen its two funded channels, when each starts and on what terms, and positions for the other two.','The deck and memo are combined.','Your captain has signed off your pod.','The memo is ready to be final in Client-Facing Resources before Night 6 begins.'],
+ steps:[
+  {t:'Hear each pod\'s position',d:'Each pod\'s speaker states the pod\'s position and main reason briefly. This is an open conversation.',q:'What is the strongest piece of evidence on your scorecard?',res:'The four scorecards.'},
+  {t:'Make the cohort decision, led by the Pod leads',d:'The Pod leads show the four RICE scores side by side, and the cohort ranks the channels. The two Fund choices are named first, each justified by its own scorecard. The cohort checks that the plan fits the illustrative $50,000 budget, sets when each funded channel starts and any thresholds for releasing more money, gives the other two their positions and revisit conditions, and states what Flood-It gives up. The Pod leads record the decision in the running agenda.',q:'Can each funded channel be defended by its own scores alone? Could the client observe every threshold and revisit condition?',res:'<a href="#positions">Positions</a>, <a href="#budget">budget check</a> and <a href="#horizon">revisit conditions</a>.'},
+  {t:'Combine the deck and the memo',d:'The Pod leads divide the combining, and pods revise their sections to match the decision.',q:'Could Flood-It\'s head of marketing act on the memo without seeing the deck?',res:'<a href="#deck-outline">Deck outline</a> and <a href="#memo-outline">memo outline</a>.'},
+  {t:'Get your captain\'s sign-off',d:'Your captain confirms that your Discovery has all seven parts, your AI Disclosure Statement is complete, and every number in your sections is labeled as a GA4 observation, a benchmark with source and year, or an assumption.',q:'Is every key result written with a starting point, a target and a date?',res:'<a href="#key-results">Key results format</a>.'}
+ ],
+ deliv:[['Preliminary Discovery','Complete and signed off'],['AI Disclosure Statement','Complete and signed off'],['Internal Strategy Proposal (deck)','Combined draft in Internal Resources'],['Channel Investment Memo','Combined; final in Client-Facing Resources before Night 6']],
+ due:['The AI Disclosure Statement, complete, by the end of tonight.','The combined draft deck, by the end of tonight.','The final Channel Investment Memo, placed in Client-Facing Resources by the Pod leads before Night 6 begins.','Every fellow knows which part of the pod\'s section they present and can explain the numbers in it.'],
+ career:'In agency work, a strategist sometimes argues for a channel the team does not choose. How do you support a group decision you did not argue for, and what does that say about you to an employer?',
+ share:'Two or three pods share what changed in their thinking tonight.',
+ tips:[['Name the two Fund choices first, each justified by its own scorecard.','Night 5 guide, step 2'],['Check that the plan fits the illustrative $50,000 budget.','Night 5 guide, step 2'],['Make every threshold and revisit condition something the client could observe.','Night 5 guide, step 2']],
+ mistakes:[['A plan that funds three channels does not answer the question.','Brief, section 7'],['"Improve retention" is not a key result, because it has no starting point, target or date.','Brief, section 6'],['Leaving a number unlabeled instead of marking it as a GA4 observation, a benchmark with source and year, or an assumption.','Night 5 guide, step 4']],
+ stuck:['positions','budget','key-results','memo-outline'],link:'n5'},
+
+{id:'night-6',nav:'Night 6',label:'Night 6',title:'Capstone Night 6: Present to the Strategy Review Committee',
+ blurb:'Present the Internal Strategy Proposal and answer the committee\'s questions.',
+ why:'If the agency\'s reasoning cannot hold up in front of its own senior people, it should not reach the client. The Strategy Review Committee tests the channel plan, the timing and the success measures before the recommendation goes to Flood-It\'s head of marketing. In plain terms, tonight you show the agency\'s senior person why your plan is right and answer the hardest questions.',
+ star:['The memo is final and the deck is combined, but the committee has not yet tested the recommendation.','Present the Internal Strategy Proposal to the Strategy Review Committee.','The Pod leads open with the recommendation, each pod presents, every speaker answers with evidence.','The recommendation presented and defended; each fellow ready for the Team Charter final review.'],
+ golden:'Open with the answer. The committee should know the answer before it hears the evidence.',
+ standup:['Your pod picks tonight\'s pod rep. If anyone has not done it yet, it is their turn.','Tonight the Daily Standup is short. The pod rep confirms from the pod\'s loaded row.','Deliverable status: the memo is final in Client-Facing Resources; the deck is ready.','Progress: your pod\'s speakers and their order.','Tonight\'s goal: present your section within the time set by the Business Communications deck. The Notetaker records the presentation order in the minutes.'],
+ where:'The memo is final, and the deck is combined.',
+ done:['You present the Internal Strategy Proposal to the Strategy Review Committee and answer its questions with evidence.','The Pod leads open with the recommendation.','Each pod presents its section.','Every speaker explains their numbers.','The Pod leads close with the ask.'],
+ steps:[
+  {t:'Do a final check',d:'Confirm the final deck, each pod\'s section, the order of speakers and the timing from the Business Communications deck. Have your pod\'s AI Disclosure Statement open in case the committee asks how AI was used.',q:'If you had to say the recommendation in two sentences, what would they be?',res:''},
+  {t:'Open with the answer',d:'The Pod leads open with the recommendation, naming the two funded channels first.',q:'Does the committee know the answer before it hears the evidence?',res:''},
+  {t:'Present your pod\'s section',d:'Each pod presents its channel, its Discovery highlights, its scorecard with evidence and its position.',q:'Can every speaker say where each of their numbers came from?',res:'<a href="#deck-outline">Deck outline</a>.'},
+  {t:'Answer the committee\'s questions',d:'Answer with evidence. If you do not know, say what you would check and where.',q:'Which part of your section is weakest, and how would you answer a question about it?',res:''},
+  {t:'Close with the ask',d:'The Pod leads close with what the cohort asks the committee to approve.',q:'Is the ask specific enough that the committee could say yes or no?',res:''}
+ ],
+ deliv:[['Internal Strategy Proposal (deck)','Final and presented'],['Channel Investment Memo','Final in Client-Facing Resources'],['Team Charter','Ready for each fellow\'s final review']],
+ due:['Asynchronously, complete your Team Charter final review (reflection, self-score and peer score) and get your captain\'s sign-off.','Reflection: a short STAR account of your own contribution, naming one finding you produced.','Self-score: a score out of 10 with a short explanation, judged against the five COOP competencies.','Peer score: a score out of 10 for each fellow, agreed in a pod conversation after Night 6.'],
+ close:'Close the agenda. There is no next session. The pod rep drafts the pod\'s final status in Part 4 of the Team Charter and records it in the pod\'s row. The Pod lead confirms.',
+ career:'Which question from the committee was hardest, and how would you answer it now in a job interview for a junior marketing or strategy role?',
+ share:'Two or three pods share one thing they would do differently on a real client engagement.',
+ tips:[['Open with the answer, naming the two funded channels first.','Night 6 guide, step 2'],['If you do not know, say what you would check and where.','Night 6 guide, step 4'],['Have your pod\'s AI Disclosure Statement open in case the committee asks how AI was used.','Night 6 guide, step 1']],
+ mistakes:[['Presenting a number you cannot trace. Every speaker should be able to say where each of their numbers came from.','Night 6 guide, step 3'],['Making the committee wait for the answer. The answer comes first.','Brief, Evaluation'],['Closing with a vague ask. It should be specific enough for the committee to say yes or no.','Night 6 guide, step 5']],
+ stuck:['grading','peer-review','positions'],link:'n6'}
+];
+/* ===== Stuck menu + labels ===== */
+const STUCK=[
+ ['Choosing which two channels','positions'],['Staying within the $50,000 budget','budget'],['Writing a revisit condition','horizon'],
+ ['Scoring with RICE','rice'],['Writing a score','write-a-score'],['Writing an observation','observations'],['Choosing and defending sources','sources'],
+ ['Reading GA4','ga4'],['The P-O-E audit','poe-audit'],['Writing key results','key-results'],['Naming and filing files','files'],
+ ['Who owns what','ownership'],['What a Pod lead does','pod-lead'],['The AI log','ai-log'],['A word I do not know','glossary'],
+ ['Peer review','peer-review'],['The memo','memo-outline'],['The deck','deck-outline'],['Presenting on Night 6','night-6'],['How grading works','grading']
+];
+const SL=Object.fromEntries(STUCK.map(([a,b])=>[b,a]));
+Object.assign(SL,{'discovery':'The seven parts of the Discovery','team-charter':'The Team Charter','whos-who':'Who is who'});
+
+/* ===== Start Here ===== */
+function pStart(){
+ const tl=NIGHTS.map((n,i)=>`<a href="#${n.id}"><span class="dot" style="background:var(--${COL[i%5]})">${i===0?'I':i}</span><b>${n.label}</b><span>${n.blurb}</span></a>`).join('');
+ const pods=PODS.map(p=>card(p.n,p.color,`Pod ${p.n}: ${p.ch}`,`<p>${p.scope}.</p><p><b>Pod question:</b> ${p.q}</p>`)).join('');
+ return `
+ <div class="hero"><div>
+   <h1>Welcome to the <span>Survival Guide</span></h1>
+   <p class="lede">You are an Associate, Digital Strategy, at a marketing agency. Your client is Flood-It, a free mobile puzzle game. This guide walks you and your pod through the capstone one night at a time, and helps when you get stuck.</p>
+   <p><a class="btn" href="#roadmap">Start the roadmap</a> <a class="btn alt" href="#playbook">Open the playbook</a></p>
+ </div><div><div class="bubble">Hi, I'm Ned. I'll show you the method. Your pod builds the answer.</div>${ned()}</div></div>
+
+ ${sec('mission','The mission',`<div class="grid g2">
+   ${card('1','pink','What you are doing',`<p>Flood-It wants to know which two of four marketing channels it should invest in next quarter. A marketing channel is a route by which a business reaches people, such as advertising or messages sent to players.</p><p>Your cohort acts as one agency. Each pod owns one channel and builds its own scorecard. Then the cohort chooses two channels together.</p>`,'Your job is to judge your channel fairly, not to win budget for it.')}
+   ${sticky('','Good to know',`<p>This guide teaches the method. The Brief says it contains no answer, and your cohort builds the answer.</p><p>Reasoning is scored, not agreement with any single answer.</p>`,'Brief, sections 1 and 10')}
+ </div>`)}
+
+ ${sec('forcing-question','The one question',`
+   ${golden(`<p style="font-family:var(--hand);font-size:1.5rem;line-height:1.3;margin:0">If Flood-It can invest in only two of four marketing channels next quarter, which two should it choose, and why those two over the other two?</p>`,'The forcing question')}
+   <div class="grid g3">
+    ${card('','green','The four channels',`<ul><li>Paid Acquisition</li><li>SEO and Content, including app store optimization (ASO)</li><li>Social and Community</li><li>Email, Retention and Lifecycle</li></ul>`)}
+    ${card('','blue','The budget',`<p>An illustrative quarterly budget of <b>$50,000</b>. Illustrative means an example amount the client gives for planning. It is not a real Flood-It figure.</p>`)}
+    ${card('','purple','The horizon',`<p>"Next quarter" means <b>Q1 2027</b>. The two channels you choose start then. The other two each get a position for 2027.</p>`)}
+   </div>
+   <p style="margin-top:14px">A forcing question makes you choose, because it does not allow you to recommend everything.</p>
+ `)}
+
+ ${sec('pods','Your pod and your channel',`<p>A pod is a team of three to five fellows. Each pod owns one channel and answers one pod question.</p><div class="grid g2">${pods}</div>`)}
+
+ ${sec('timeline','The 7 stops',`<p>The capstone runs over seven meetings: Introduction Night, then Nights 1 to 6. Tap a stop to open it.</p><div class="timeline">${tl}</div>`)}
+
+ ${sec('how-to-use','How to use this guide',`<div class="grid g3">
+   ${sticky('','Front to back',`<p>Open the <a href="#roadmap">Roadmap</a> and follow the stops in order. Every stop has the same parts, so you always know where to look.</p>`)}
+   ${sticky('pk','Jump in when stuck',`<p>Use the search box, or the "I'm stuck on" menu at the top of every page. The yellow Stuck? bar at the bottom shows who to ask.</p>`)}
+   ${sticky('gn','Work as a pod',`<p>Pods have three to five fellows, so every part of this guide is written for a team. Decide together who owns what.</p>`)}
+ </div>
+ <div class="grid g2" style="margin-top:18px">
+   ${notebook('How every night runs',['<b>Daily Standup</b> (15 minutes). Captains run it. Each pod rep gives the pod\'s update from its loaded row.','<b>Working block.</b> Pods meet in breakouts and work toward the night\'s STAR Goal.','<b>Regroup.</b> A career discussion and shareouts, four reflection prompts answered on your own, and the agenda loaded for next time.'])}
+   ${card('','yellow','What STAR means here',`<p>Each night opens with a STAR Goal: four lines (Situation, Task, Action, Result) that say what the night leads to. At the end of each night you write what you did as one STAR line. Six nights give you six lines of evidence.</p><p>After Night 6, you turn your strongest finding into a STAR story you can use in interviews.</p>`)}
+ </div>
+ <p class="res" style="margin-top:12px">This guide is a reference only. It saves nothing, so copy anything you want to keep into your pod's documents.</p>`)}
+
+ ${sec('meet-ned','Meet Ned',`<div class="grid g2" style="align-items:center">
+   <div>${ned()}</div>
+   <div>
+     <div class="bubble">I'm a stub of chalk, so I'm used to getting worn down and still showing up.</div>
+     <p>Ned is your guide. He points you to the method, asks the questions a good reviewer would ask, and reminds you to date every fact. He will not hand you an answer, because there is no answer in this guide. Your pod and your cohort build it.</p>
+   </div></div>`)}
+
+ ${sec('help-path','Where to get help',`${card('','yellow','The help path',`<ol><li><b>Ask your captain first.</b></li><li>Still stuck? Bring it to the whole cohort GChat or a senior captain.</li></ol><p>Captains help with logistics, such as permissions and leading meetings, and with navigating the work. They never write your work or give you the answer.</p>`)}`)}
+ `;
+}
+
+/* ===== Roadmap ===== */
+function pRoadmap(){
+ const stops=NIGHTS.map((n,i)=>card(i===0?'I':i,COL[i%5],n.label,`<p>${n.blurb}</p><p><a class="btn sm" href="#${n.id}">Open this stop</a></p>`)).join('');
+ return `
+ <h1>Roadmap</h1>
+ <p class="lede">Seven stops, one template. Every stop has the same parts: why it matters, the STAR Goal, tonight's flow, steps with guiding questions, what done looks like, what is due, Pro Tips, Rookie Mistakes and a Stuck? box.</p>
+ ${sec('stops','Pick a stop',`<div class="grid g3">${stops}</div>`)}
+ ${sec('night-flow','How every night runs',`<div class="flow">
+   <div><span class="min">15 minutes</span><h3>Daily Standup</h3><p>Captains run it. Each pod rep gives the pod's update from its loaded row, and the Notetaker records the minutes.</p></div>
+   <div><span class="min">Pod breakouts</span><h3>Working block</h3><p>Pods work toward the night's STAR Goal, following the night guide's steps and guiding questions.</p></div>
+   <div><span class="min">Whole cohort</span><h3>Regroup</h3><p>A career discussion and shareouts, four reflection prompts answered on your own, and the agenda loaded for next time.</p></div>
+ </div>
+ <p style="margin-top:12px">Debating findings and reviewing drafts happen in pod time, not in the Daily Standup.</p>`)}
+ `;
+}
+
+/* ===== Night template ===== */
+function pNight(n,i){
+ const prev=NIGHTS[i-1],next=NIGHTS[i+1];
+ const flow = n.flow ? `<div class="flow">${n.flow.map(f=>`<div><h3>${f[0]}</h3><p>${f[1]}</p></div>`).join('')}</div>` :
+ `<div class="flow">
+   <div><span class="min">15 minutes</span><h3>Daily Standup</h3>${ul(n.standup)}<p class="res">The Notetaker records the minutes. Captains run the Daily Standup.</p></div>
+   <div><span class="min">Pod breakouts</span><h3>Working block</h3><p>The Notetaker reads tonight's STAR Goal aloud.</p><p><b>Where you are.</b> ${n.where}</p></div>
+   <div><span class="min">Whole cohort</span><h3>Regroup</h3><p><b>Career discussion.</b> ${n.career}</p><p>${n.share}</p><p><b>Load the agenda.</b> ${n.close||'The pod rep drafts the update in Part 4 of the Team Charter (deliverable status, progress, next session\'s goal) and loads the pod\'s row. The Pod lead confirms.'}</p></div>
+ </div>`;
+ const steps = n.steps.map((s,k)=>`<div class="step sx" data-t="${s.t}"><div class="no" aria-hidden="true">${k+1}</div><div><h3>${s.t}${s.min?` <span class="pill y">${s.min}</span>`:''}</h3><p>${s.d}</p>${s.q?`<div class="gq"><b>Guiding question:</b> ${s.q}</div>`:''}${s.res?`<p class="res">${s.res}</p>`:''}</div></div>`).join('');
+ const tipCols=['','gn','bl','pu'];
+ const tips=n.tips.map((t,k)=>sticky(tipCols[k%4],'Pro Tip',`<p>${t[0]}</p>`,t[1])).join('');
+ const mist=n.mistakes.map(t=>sticky('pk','Rookie Mistake',`<p>${t[0]}</p>`,t[1])).join('');
+ const stuckLinks=n.stuck.map(s=>s==='night-6'?'':`<li><a href="#${s}">${SL[s]||s}</a></li>`).join('');
+ return `
+ <div class="crumbs"><a href="#roadmap">Roadmap</a> / ${n.label}</div>
+ <h1>${n.title}</h1>
+ ${n.why?'':`<p class="lede">The capstone context session and project kickoff, then you set up your pod.</p>`}
+ <div class="grid g2" style="align-items:start">
+  ${n.why?card('','pink','Why it matters to Flood-It',`<p>${n.why}</p>`):card('','pink','By the end of the session you can',ul(n.learn))}
+  ${golden(`<p style="margin:0">${n.golden}</p>`)}
+ </div>
+ ${n.star?sec(n.id+'-star','STAR Goal',`<div class="star"><div><b>Situation</b>${n.star[0]}</div><div><b>Task</b>${n.star[1]}</div><div><b>Action</b>${n.star[2]}</div><div><b>Result</b>${n.star[3]}</div></div>`):''}
+ ${sec(n.id+'-flow',n.flow?'Tonight\'s flow':'Tonight\'s flow',flow)}
+ ${sec(n.id+'-steps',n.id==='intro-night'?'Pod setup steps':'Steps',steps)}
+ ${n.done?sec(n.id+'-done','What done looks like',`<div class="grid g2" style="align-items:start">${boost('Done looks like',n.done)}${tbl('Deliverable status by the end of the working block',['Item','Status'],n.deliv)}</div>`):''}
+ ${sec(n.id+'-due','What is due',`<div class="grid g2" style="align-items:start">${card('','green','Due',ul(n.due))}${n.id==='intro-night'?sticky('bl','Discussion prompt',`<p>${n.discuss}</p>`,'Introduction deck, slide 18'):notebook('Career discussion question',[n.career])}</div>`)}
+ ${n.id==='intro-night'?'':sec(n.id+'-reflect','Reflect on your own',`<p>Answer these four prompts independently. Keep prompts 1 to 3 in your own notes. You will draw on them for your Team Charter final review after Night 6.</p>${notebook('Four reflection prompts',REFLECT.map((r,k)=>`<b>${k+1}.</b> ${r}`))}`)}
+ ${sec(n.id+'-tips','Pro Tips and Rookie Mistakes',`<div class="grid g3">${tips}${mist}</div>`)}
+ ${sec(n.id+'-stuck','Stuck?',`<div class="grid g2" style="align-items:start">${card('','yellow','Who to ask',`<ol><li><b>Ask your captain first.</b></li><li>Still stuck? Bring it to the whole cohort GChat or a senior captain.</li></ol><p>Captains help with logistics and with navigating the work. They never write the work or give you the answer.</p>`)}${card('','purple','Helpful pages',`<ul>${stuckLinks}<li><a href="#glossary">Glossary</a></li><li><a href="#faq">FAQ</a></li></ul>${n.link?`<p>${CP(L[n.link],n.label+' guide')}</p>`:''}`)}</div>`)}
+ <div class="pager">${prev?`<a class="btn alt" href="#${prev.id}">&larr; ${prev.label}</a>`:`<a class="btn alt" href="#roadmap">&larr; Roadmap</a>`}${next?`<a class="btn" href="#${next.id}">${next.label} &rarr;</a>`:`<a class="btn" href="#grading">See how grading works &rarr;</a>`}</div>`;
+}
+
+/* ===== Playbook ===== */
+const ANCH=[
+ ['1','Reach','A small audience in Q1 2027, such as the followers of a new account','Small: a few more store visitors install; no direct effect on staying or paying','Weeks of work by a small team at low cost, mostly without changing the game'],
+ ['2','','Some players, for example only those who have already stopped playing','Moderate: noticeably changes whether a person tries the game, or moves a secondary key result','Modest cost and setup, some work on the game, done within Q1 2027'],
+ ['3','','Most new players who install, or most store visitors','High: brings in a player who would not otherwise install, or clearly moves one main key result','A substantial share of the budget plus ongoing management and creative production'],
+ ['4','','A large new audience, at a scale set by the budget','Very high: directly changes whether players stay and pay','Sustained content production, new skills or staff, or more than one quarter to show results']
+];
+function pPlaybook(){
+ return `
+ <h1>Playbook</h1>
+ <p class="lede">The method, one topic at a time. Use it as a quick reference when you are stuck.</p>
+ ${nedSays('This is the how, not the what. Your evidence picks the answer.')}
+
+ ${sec('positions','Positions: Fund, Fund with conditions, Defer',`
+  <p>Every channel receives one of three positions for 2027. Only one position counts as one of the two choices.</p>
+  ${tbl('Positions',['Position','What it means','Counts as one of the two choices?'],[['Fund','Real budget from Q1 2027, with targets','<b>Yes</b>'],['Fund with conditions','Only small, low-cost actions; not a major budget line','No'],['Defer','No money now; the pod names what must be true to revisit the channel in 2027','No']])}
+  <div class="grid g2" style="margin-top:16px">
+   ${golden('<p style="margin:0">The recommendation names <b>exactly two</b> channels as Fund. Each of the two stands on its own and is supported by its own scorecard.</p>')}
+   ${sticky('gn','What counts',`<ul><li>Two Fund channels plus a third as Fund with conditions answers the question.</li><li>Funding three channels does not.</li><li>A pod that recommends deferring its own channel, with evidence, can earn full marks.</li><li>You may note how the two chosen channels would work together. That is a welcome extra, never required.</li></ul>`,'Brief, section 7')}
+  </div>`)}
+
+ ${sec('budget','Budget check',`<div class="grid g2">
+   ${card('','blue','The rule',`<p>Flood-It's head of marketing has set an illustrative quarterly budget of <b>$50,000</b>. Your recommendation must fit within it.</p><p>Any spending you recommend, including small actions on channels you do not choose, comes out of the same $50,000.</p>`,'Rank first. Then check the budget.')}
+   ${card('','green','What the cohort checks on Night 5',`<ul><li>The plan fits the illustrative $50,000 budget.</li><li>When each funded channel starts, and any thresholds for releasing more money.</li><li>Positions and revisit conditions for the other two.</li><li>What Flood-It gives up.</li></ul>`)}
+  </div>`)}
+
+ ${sec('horizon','The 2027 horizon and revisit conditions',`<div class="grid g2">
+   ${card('','purple','Q1 2027',`<p>"Next quarter" means the first quarter of 2027, January to March 2027. The two channels you choose start then. Each of the other two channels receives a position for 2027, either small low-cost actions or no money for now, and a revisit condition.</p>`)}
+   ${card('','pink','A revisit condition',`<p>An observable result that would lead Flood-It to reconsider the channel later in 2027.</p><p>"When the time is right" is not a revisit condition, because no one can observe it.</p>`,'Test it: could the client actually observe it?')}
+  </div>
+  <p style="margin-top:14px"><b>The objective:</b> grow Flood-It's base of retained, paying players efficiently in 2027.</p>`)}
+
+ ${sec('rice','RICE decoder',`
+  <p>RICE is a prioritization framework used by product and growth teams. It scores Reach, Impact, Confidence and Effort, then combines them into one number.</p>
+  <div class="formula" role="math" aria-label="RICE score equals Reach times Impact times Confidence divided by Effort">RICE score = <b>R</b>each &times; <b>I</b>mpact &times; <b>C</b>onfidence &divide; <b>E</b>ffort</div>
+  <div class="grid g4">
+   ${card('R','pink','Reach (1 to 4)',`<p>How many current or potential players would the channel affect in Q1 2027, within the budget?</p>`)}
+   ${card('I','yellow','Impact (1 to 4)',`<p>For each person reached, how much would the channel move day-7 retention, the cost per retained player or another key result?</p>`)}
+   ${card('C','green','Confidence (50%, 80%, 100%)',`<p>How strong is the evidence behind your Reach and Impact scores?</p>`)}
+   ${card('E','blue','Effort (1 to 4, reversed)',`<p>How much money, time and work would the channel need in Q1 2027?</p>`)}
+  </div>
+  <div class="grid g2" style="margin-top:16px">
+   ${sticky('pk','Effort is reversed',`<p>A higher Effort score means more work. RICE divides by Effort, so more effort lowers the final score.</p>`,'Brief, section 9')}
+   ${sticky('bl','Why the industry uses it',`<p>RICE makes each assumption visible, so another person can check it. Because it divides by Effort, it rewards options that deliver a lot for a small cost, which suits a fixed budget.</p>`,'Brief, section 9')}
+  </div>
+  <h3 style="margin-top:22px">The anchors</h3>
+  <p>Anchors are short descriptions of what each score means. Every pod uses the same ones, so the four scorecards can be compared fairly.</p>
+  ${tbl('RICE anchors',['Score','Reach','Impact','Effort (reversed)'],ANCH.map(r=>[r[0],r[2],r[3],r[4]]))}
+  <div style="height:14px"></div>
+  ${tbl('Confidence anchors',['Confidence','Anchor'],[['100%','Several sources agree, including a published benchmark and a GA4 observation, and the way the channel works is well established'],['80%','At least one cited benchmark or GA4 observation, with one important unknown'],['50%','Mostly assumption, or the channel\'s results cannot be reliably measured or traced']])}
+  <p style="margin-top:8px">Use only these three Confidence levels. Confidence falls when the data is scrambled, when a benchmark describes a different kind of game, or when results cannot be traced back to the channel.</p>
+  ${tbl('Where to look for each criterion',['Criterion','What to look at','Where to find it'],[['Reach','Whether it touches every new player, only some players, or a large new audience','GA4 Reports snapshot and User acquisition reports; your pod\'s benchmark; the store pages'],['Impact','Whether it changes what a player does (installs, stays, pays) or only whether they notice the game','Your pod\'s benchmark; GA4 Retention and Events reports'],['Confidence','Whether a benchmark and a GA4 observation agree, and whether the channel\'s results can be measured and traced','The sources table in your Preliminary Discovery'],['Effort (reversed)','Setup cost, whether the game itself must be updated, ongoing creative or content work, and new skills or staff','Platform guidance; the $50,000 budget']])}
+  <h3 style="margin-top:22px">Reading the total</h3>
+  <p>RICE scores run from about 0.13 (1 &times; 1 &times; 50% &divide; 4) to 16 (4 &times; 4 &times; 100% &divide; 1). A score means nothing on its own. Its job is to rank the four channels against each other. After the ranking, the cohort checks that the two channels it chooses, and any small actions on the other two, fit within the $50,000 budget.</p>
+  <p>If two channels have the same or nearly the same total, the cohort breaks the tie with one named criterion score, such as Impact, and explains why that criterion matters most for Flood-It.</p>
+  <div class="card c-yellow sx" data-t="Try the formula" style="margin-top:14px"><header><span>Try the formula</span></header><div class="body">
+   <p class="res">Practice with any numbers. Nothing is saved, and these are not your scores.</p>
+   <div class="calc">
+    <div class="field"><label for="cr">Reach</label><select id="cr"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+    <div class="field"><label for="ci">Impact</label><select id="ci"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+    <div class="field"><label for="cc">Confidence</label><select id="cc"><option value="0.5">50%</option><option value="0.8">80%</option><option value="1">100%</option></select></div>
+    <div class="field"><label for="ce">Effort</label><select id="ce"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+    <div><div class="res">RICE score</div><div class="big" id="cout" aria-live="polite">0.25</div></div>
+   </div></div></div>`)}
+
+ ${sec('write-a-score','How to write a score',`
+  <p>Every score has three parts: the number, one sentence of evidence and the source.</p>
+  <div class="formula" style="font-size:clamp(1.05rem,2.4vw,1.4rem)">[Criterion] [score]. [One sentence of evidence]. Source: [benchmark and year, <b>or</b> GA4 report, menu path and date range, <b>or</b> store page and date checked].</div>
+  <div class="grid g2">
+   ${notebook('Example from the scorecard template',['A fictional word game, not one of your channels:','"Effort 1. No media spend and a few weeks of work using an existing message screen. Source: assumption, partner terms, October 2026."'])}
+   ${golden('<p style="margin:0">A score without an evidence sentence and a source is not finished.</p>')}
+  </div>
+  <p style="margin-top:12px">Every number is labeled as a GA4 observation, a benchmark with its source and year, or an assumption, and carries its date or period. ${CP(L.rice,'RICE Scorecard template')}</p>`)}
+
+ ${sec('observations','Writing an observation',`
+  <p>Write every observation in four parts.</p>
+  ${tbl('Four-part observation format',['Part','What to write'],[['Where we looked','The GA4 report, menu path and date range; or the store page and date checked; or the benchmark and its edition'],['What we noticed','One specific observation, in words'],['Why it matters for our channel','One sentence linking the observation to your pod question'],['How much we trust it','Strong or weak, and the limit']])}
+  <div class="grid g2" style="margin-top:16px">
+   ${card('','blue','Observation language',`<p>One plain sentence that names the report, the date range and the pattern you noticed, without claiming a precise number.</p><p><i>"In the [report] for July 1 to September 30, 2026 (the date range every pod uses), [the pattern, in words]."</i></p>`,'Describe what you see in words, not exact values.')}
+   ${sticky('gn','Record at least two',`<p>Record at least two GA4 observations in your Preliminary Discovery. Write three to five data observations in total.</p>`,'Brief, section 11 and Night 1 guide')}
+  </div>`)}
+
+ ${sec('sources','Source rules',`<div class="grid g2">
+   ${card('1','pink','Treat all sources as equal',`<p>What matters is whether a source fits the question and whether you can defend it.</p>`)}
+   ${card('2','yellow','Label every source',`<p><b>Quantitative:</b> data you count or measure (how much, how many, how often).</p><p><b>Qualitative:</b> data you read and interpret (why, how, what people think).</p>`)}
+   ${card('3','green','Defend every source',`<p><i>"We leaned on [source] because [why it is credible and relevant]. Its limit is [what it cannot tell us]."</i></p>`)}
+   ${card('4','blue','Label every number and date it',`<p>Every number is a GA4 observation, a benchmark with its source and year, or an assumption, and carries its date or period.</p><p>Live values are never stated as facts. Record each one with the date you checked it.</p>`)}
+  </div>
+  <p style="margin-top:12px">You may cite further figures if each is sourced, dated and labeled. Ask of every figure what kind of game, platform and year it describes. For benchmarks, use the latest edition and cite its year. A spreadsheet is optional, and no template is provided.</p>`)}
+
+ ${sec('ga4','GA4: date range and the four reports',`
+  <div class="grid g2">
+   ${golden('<p style="margin:0">Every pod sets the same GA4 date range before reading any report: <b>July 1 to September 30, 2026</b>. One fixed range keeps the four pods comparable.</p>','Set this first')}
+   ${sticky('bl','Reading GA4',`<ul><li>You have Viewer access only and cannot export the data.</li><li>Google scrambles the data on purpose, so describe patterns in words.</li><li>Some traffic may appear as "(direct)" or "(not set)". That means GA4 could not tell where it came from.</li></ul>`,'Brief, section 3 and section 11')}
+  </div>
+  <div style="height:14px"></div>
+  ${tbl('The four GA4 reports',['Report','Menu path','What it helps you observe'],[['Reports snapshot','Reports, Reports snapshot','An overview of how many people use the game over the date range'],['User acquisition','Reports, Acquisition, User acquisition','Where new players come from'],['Events','Reports, Engagement, Events','What players do inside the game'],['Retention','Reports, Retention','How many players come back over time']])}
+  <p class="res" style="margin-top:8px">Flood-It's analytics live in Google's GA4 demo property, "GA4 - Flood-It!". Find the access help in the Brief's Resources list.</p>`)}
+
+ ${sec('poe-audit','The P-O-E audit',`
+  <p>P-O-E means paid, owned and earned media: attention you buy, channels you control, and attention you do not pay for, such as ratings and reviews. Your audit has 10 to 15 rows on where Flood-It stands today for your channel.</p>
+  ${tbl('P-O-E audit columns',['Column','What to record'],[['Type','Paid, Owned or Earned'],['Asset or channel','For example, a store page, advertisements, a website, social accounts, ratings and reviews, push notifications'],['What exists today','The facts, with the date checked'],['Quality (1 to 4, with a reason)','1 weak or missing, 2 basic, 3 solid, 4 strong, plus one sentence'],['Gap or opportunity','One sentence'],['Source or GA4 menu path','The address, or the menu path and date range']])}`)}
+
+ ${sec('key-results','Key results format',`<div class="grid g2">
+   ${card('','green','What a key result needs',`<p>An objective is one goal supported by a few measurable results. Your cohort chooses two to four key results and explains each target.</p><p>A key result needs a <b>starting point</b>, a <b>target</b> and a <b>date</b>.</p>`,'"Improve retention" is not a key result.')}
+   ${card('','blue','Example from the Brief',`<p><i>"Raise day-7 retention of new players from the level observed in GA4 for July 1 to September 30, 2026 to [target] by June 30, 2027."</i></p><p>Example key results: raise day-7 retention; lift the App Store rating; lower the cost per retained player; raise average revenue per user (ARPU).</p>`)}
+  </div>`)}
+ `;
+}
+
+/* ===== Deliverables ===== */
+function pDeliverables(){
+ return `
+ <h1>Deliverables hub</h1>
+ <p class="lede">Four deliverables plus two shared working documents. Two are graded, two are required but not graded, and two support the work.</p>
+ ${sec('hub','The six items',`${tbl('Deliverables',['Item','Owner','Due','Graded?','Internal or client-facing','Template'],[
+  ['Preliminary Discovery (P-O-E audit)','Each pod (4 in all)','End of Night 2','Required, not graded','Internal',CP(L.rice,'RICE Scorecard template')+'<br><span class="res">The Discovery itself is a Google Doc your pod creates and shares with your captain.</span>'],
+  ['AI Disclosure Statement','Each pod (4 in all)','Parts 1 to 4 by end of Night 1; logged every night; complete by Night 5','Required, not graded','Internal',CP(L.ai,'AI Disclosure Statement')],
+  ['Internal Strategy Proposal (deck and presentation)','Whole cohort (1 deck). Pod leads combine the sections','Pod sections Night 4; combined draft Night 5; final and presented Night 6','Graded','Internal',CP(L.deck,'Deck template')],
+  ['Channel Investment Memo','Whole cohort (1 memo)','Pod sections Night 4; combined draft Night 5; final before Night 6 begins','Graded','Client-facing','See the <a href="#memo-outline">memo outline</a>'],
+  ['Team Charter','Each pod (4 in all)','Started on Introduction Night; final review after Night 6','Holds the individual 20 points','Internal',CP(L.charter,'Pod Team Charter')],
+  ['Running agenda','Whole cohort (1). Each pod rep loads the pod\'s row','Created on Introduction Night; loaded before every meeting','Not graded','Internal',CP(L.agenda,'Running Agenda')]
+ ])}`)}
+
+ ${sec('internal-vs-client','Internal compared with client-facing',`<div class="grid g2">
+   ${card('','purple','The deck is internal',`<p>It is an internal proposal presented to the agency's Strategy Review Committee, which tests the recommendation before it leaves the agency. It is not a client presentation.</p>`)}
+   ${card('','green','The memo is client-facing',`<p>The client receives the recommendation as one written memo that it can read, forward and act on. The memo must make sense on its own.</p>`,'The deck convinces your agency. The memo is what the client keeps.')}
+  </div>`)}
+
+ ${sec('discovery','Preliminary Discovery: seven parts',`<p>One per pod, about two pages. It is the evidence base for everything that follows.</p>
+  <ol>
+   <li>A header with the title, pod, date and the GA4 date range.</li>
+   <li>A purpose paragraph that names your channel and your pod question.</li>
+   <li>The <a href="#poe-audit">P-O-E audit</a>: 10 to 15 rows.</li>
+   <li>Three to five data observations in the <a href="#observations">four-part format</a>.</li>
+   <li>A sources table: each source, whether it is quantitative or qualitative, why you relied on it and its limit.</li>
+   <li>A first-pass RICE scorecard marked "Draft".</li>
+   <li>Three to five questions to answer next.</li>
+  </ol>`)}
+
+ ${sec('ai-parts','AI Disclosure Statement: five parts',`<p>One per pod, from a shared template.</p>
+  <ol><li><b>Part 1.</b> Project details and ownership.</li><li><b>Part 2.</b> AI ideation.</li><li><b>Part 3.</b> AI toolkit.</li><li><b>Part 4.</b> Five agreements on checking AI output.</li><li><b>Part 5.</b> An ongoing log in which every fellow records each use of AI.</li></ol>
+  <p>See the <a href="#ai-log">log fields</a> in the Toolkit.</p>`)}
+
+ ${sec('deck-outline','Internal Strategy Proposal: what is in the deck',`
+  <ol>
+   <li>The recommendation, first.</li><li>The framework.</li><li>One section per pod: channel, Discovery highlights, scorecard with evidence, and position.</li><li>The four scorecards side by side.</li><li>Why these two channels over the other two.</li><li>Data limits and risks.</li><li>What the cohort asks the committee to approve.</li>
+  </ol>
+  ${sticky('bl','Optional sample deck',`<p>The Brief lists a sample Internal Proposal deck (PayPal Growth Strategy) as an optional reference. <b>Structure only, not the RICE method.</b> It uses five criteria, each scored 1 to 4, for a total out of 20. You do not need to follow its structure strictly.</p>`,'Sample deck, slides 2 and 10')}`)}
+
+ ${sec('memo-outline','Channel Investment Memo: what is in the memo',`
+  <p>About two to three pages, addressed to Flood-It's head of marketing.</p>
+  <ol>
+   <li>To, From, Date and Re lines.</li>
+   <li>The recommendation in the first two sentences, naming the two chosen channels.</li>
+   <li>Findings: one short paragraph per channel, with evidence and sources.</li>
+   <li>A scorecard exhibit with one line of evidence per score.</li>
+   <li>Why these two and not the other two.</li>
+   <li>Positions and revisit conditions for the other two.</li>
+   <li>Next steps and key results.</li>
+   <li>Sources.</li>
+   <li>The fiction disclaimer in the footer.</li>
+  </ol>`)}
+
+ ${sec('files','Project Folder and file names',`
+  <p>The captains build one Google Drive Project Folder per cohort and manage permissions. Files made before Night 3 start as Google Docs shared with your captain and move into the Project Folder on Night 3.</p>
+  <div class="tree" aria-label="Project Folder structure"><span class="in">Project Folder</span>
+&boxvr; <span class="in">Internal Resources</span>
+&boxv;   &boxvr; the deck
+&boxv;   &boxvr; the running agenda
+&boxv;   &boxur; one subfolder per pod
+&boxv;       &boxur; that pod's Discovery, AI Disclosure Statement and Team Charter
+&boxur; <span class="ci">Client-Facing Resources</span>
+    &boxur; the memo only</div>
+  <div class="grid g2" style="margin-top:16px">
+   ${card('','yellow','File naming rule',`<p>Pod files: <b>[Pod #]_[Deliverable]_v[#]</b><br>Example: <b>Pod2_Discovery_v2</b></p><p>Cohort files: <b>Cohort_[Deliverable]_v[#]</b></p>`,'Could someone outside your pod find your latest file in under a minute?')}
+   ${sticky('gn','More on sharing and naming',`<p>Sharing and naming rules are taught on Night 3 in the FA26 Capstone Business Communications deck.</p>`,'Brief, section 12')}
+  </div>`)}
+
+ ${sec('due-by-night','Due, night by night',`${tbl('What is due when',['When','What'],[
+  ['End of Night 1','AI Disclosure Statement, Parts 1 to 4'],['End of Night 2','Preliminary Discovery with its draft scorecard'],['Night 4','Deck and memo, pod sections drafted'],['Night 5','Deck and memo, combined draft. AI Disclosure Statement complete'],['Before Night 6 begins','Memo final, in Client-Facing Resources'],['Night 6','Deck final and presented'],['After Night 6','Team Charter final review, done asynchronously']])}`)}
+ `;
+}
+
+/* ===== Who's Who ===== */
+const DUTIES=['Makes sure the pod\'s row in the running agenda is loaded before each Daily Standup','Confirms ownership in the Team Charter and in Part 1 of the AI Disclosure Statement','Serves as the captain\'s main point of contact','Works with the other Pod leads to merge pod sections into one deck and one memo','Leads the cohort decision on Night 5','Opens and closes the Night 6 presentation with the other Pod leads','Does a full share of the analysis as an Associate'];
+const OWN=[['Discovery or Due Diligence lead','Organizes the pod\'s research, the data observations and the sources table.'],['Scorecard lead','Keeps the pod\'s framework scores, the evidence sentence and the source for every score.'],['Deck section lead','Builds the pod\'s slides in the cohort deck and coordinates who presents each part.'],['Memo section lead','Drafts the pod\'s section of the client memo and its scorecard exhibit.'],['AI Disclosure Statement keeper','Makes sure Parts 1 to 4 are complete and every pod member logs their AI use.'],['Team Charter keeper','Keeps the charter current, including the Daily Standup drafts.']];
+function pWho(){
+ return `
+ <h1>Who's Who</h1>
+ <p class="lede">Everyone has a part. Here is who does what, from the agency's senior person to the person taking minutes tonight.</p>
+ ${sec('roles','The cast',`<div class="grid g3">
+  ${card('','purple','Senior Manager',`<p>Your cohort's senior captain. Inside the capstone, the Senior Manager <b>alone</b> sits as the agency's Strategy Review Committee. On Night 6 the Senior Manager hears the cohort's presentation, decides on the recommendation and evaluates it.</p>`)}
+  ${card('','blue','Captains (Junior Managers)',`<p>Each captain acts as a pod's Junior Manager and mentors the cohort. Captains run each night's Daily Standup, check work nightly, build the Project Folder and manage permissions.</p>`,'They never write your work or give you the answer.')}
+  ${card('','pink','Associates (you)',`<p>Your title is Associate, Digital Strategy. Every night you own at least one piece of work, use AI responsibly and present on Night 6.</p>`)}
+  ${card('','yellow','Pod lead',`<p>Elected on Introduction Night, one per pod. Your captain's main contact. Merges sections and leads the Night 5 decision. See <a href="#pod-lead">the seven duties</a>.</p>`)}
+  ${card('','green','Pod rep',`<p>Rotates nightly. Gives the pod's update in the Daily Standup, the 15-minute check that opens each night. Rotate so everyone serves at least once.</p>`)}
+  ${card('','pink','Notetaker',`<p>A rotating volunteer fellow. Records the meeting minutes and reads the night's STAR Goal aloud before pod work. The first Notetaker is named on Introduction Night.</p>`)}
+ </div>
+ <p style="margin-top:12px">Meeting minutes are a short written record of a meeting. They list who attended, what was decided, what actions were agreed, who owns each action and when each action is due.</p>`)}
+
+ ${sec('pod-lead','The Pod lead: seven duties',`<p>Confirm each duty with your Pod lead in Part 2 of the Team Charter.</p>
+  ${tbl('Pod lead duties',['#','Duty'],DUTIES.map((d,i)=>[String(i+1),d]))}`)}
+
+ ${sec('ownership','Ownership: who owns what',`
+  <p>Each Associate owns one primary piece of work and backs up one other. Ownership means making sure the piece is complete and on time, not doing it alone.</p>
+  ${tbl('Ownership examples from the Team Charter',['Example role','What it covers'],OWN)}
+  <p class="res" style="margin-top:8px">Record owners in Part 2 of the ${CP(L.charter,'Team Charter')}.</p>`)}
+
+ ${sec('build-role','Build your own role',`
+  <p>Your pod can define a role that fits its work. Fill this in, then copy the text into your Team Charter. Nothing here is saved.</p>
+  <div class="grid g2" style="align-items:start">
+   <div class="card c-green"><header><span>Define a role</span></header><div class="body">
+    <div class="field"><label for="rb-name">Role name</label><input id="rb-name" type="text" placeholder="For example: Source checker"></div>
+    <div class="field"><label for="rb-what">What this role makes sure gets done</label><textarea id="rb-what" rows="3"></textarea></div>
+    <div class="field"><label for="rb-who">Primary owner</label><input id="rb-who" type="text"></div>
+    <div class="field"><label for="rb-back">Backup</label><input id="rb-back" type="text"></div>
+    <fieldset style="border:0;padding:0;margin:8px 0"><legend style="font-weight:800">Competencies this role shows</legend><div class="chips">${COMP.map((c,i)=>`<label><input type="checkbox" class="rb-c" value="${c}"> ${c}</label>`).join('')}</div></fieldset>
+   </div></div>
+   <div><div class="out" id="rb-out" aria-live="polite">Role: (name)</div><p style="margin-top:10px"><button class="btn sm" id="rb-copy" type="button">Copy to clipboard</button> <span class="res" id="rb-msg" role="status"></span></p></div>
+  </div>`)}
+ `;
+}
+
+/* ===== Toolkit ===== */
+const GLOSS=[
+['Anchor','A short description of what each score means, so every pod scores its channel in the same way.','Brief, section 9'],
+['ARPU (average revenue per user)','Total revenue divided by active players over a period. It shows what the typical player is worth.','Brief, section 2'],
+['ASO (app store optimization)','Improving an app\'s store page (name, keywords, screenshots, description and ratings) so more people find it and more of those who see it install. In plain terms, the app store version of making a website show up in Google.','Brief, section 3'],
+['Benchmark','A published industry figure used for comparison, always cited with its source and year.','Brief, section 2'],
+['CPI (cost per install)','Advertising spend divided by the installs it produced. For example, $1,000 that produces 500 installs is a CPI of $2.00.','Brief, section 2'],
+['Cost per retained player','Advertising spend divided by the players who are still playing on day 7.','Brief, section 2'],
+['Day-7 retention','Out of every 100 people who install a game, how many are still playing one week later. For most mobile games, the answer is about 4 (GameAnalytics 2025 Mobile Gaming Benchmarks).','Brief, section 2'],
+['Daily Standup','The 15-minute check that opens each night. Captains run it, and each pod rep gives the pod\'s update from its loaded row.','Introduction deck'],
+['Forcing question','A question that makes you choose, because it does not allow you to recommend everything.','Brief, section 6'],
+['GA4 (Google Analytics 4)','Google\'s tool for measuring how people use a website or app. Flood-It\'s analytics are a demonstration property. You have Viewer access only, the data is deliberately scrambled and you cannot export it.','Brief, section 3'],
+['"(direct)" and "(not set)"','Labels GA4 uses when it could not tell where some traffic came from.','Brief, section 11'],
+['Illustrative budget','An example amount the client gives for planning. It is not a real Flood-It figure.','Brief, section 4'],
+['In-app advertising','The game is paid for showing advertisements.','Brief, section 2'],
+['In-app purchase (IAP)','A player pays for something inside the game.','Brief, section 2'],
+['Install','A person downloads the game and opens it. An organic install did not come from an advertisement.','Brief, section 2'],
+['Key result','A measurable result with a starting point, a target and a date.','Brief, section 6'],
+['Lifecycle marketing','The messages a player receives after installing, such as a welcome sequence, reminders and invitations to come back, mostly as push notifications and in-app messages.','Brief, section 3'],
+['Marketing channel','A route by which a business reaches people, such as advertising or messages sent to players.','Brief, section 1'],
+['Meeting minutes','A short written record of a meeting: who attended, what was decided, what actions were agreed, who owns each action and when it is due.','Running Agenda'],
+['Menu path','The sequence of menus that leads to a report. Record it so someone else can find the same report.','Night 1 guide'],
+['Objective and key results (OKR)','One goal supported by a few measurable results. The objective here is to grow Flood-It\'s base of retained, paying players efficiently in 2027.','Brief, section 6'],
+['Observation language','One plain sentence that names the report, the date range and the pattern you noticed, without claiming a precise number.','Brief, section 3'],
+['P-O-E (paid, owned, earned)','Attention you buy, channels you control, and attention you do not pay for, such as ratings and reviews.','Night 1 guide'],
+['Pod','A small team of three to five fellows. Each pod studies one of the four channels.','Brief, section 1'],
+['Position','The stance a channel receives for 2027: Fund, Fund with conditions or Defer. Only Fund counts as one of the two choices.','Brief, section 7'],
+['Push notification','A short message on a player\'s phone outside the game.','Brief, section 2'],
+['Q1 2027','The first quarter of 2027: January to March 2027.','Night 2 guide'],
+['Quantitative and qualitative','Quantitative sources are data you count or measure (how much, how many, how often). Qualitative sources are data you read and interpret (why, how, what people think).','Brief, section 11'],
+['RICE','A prioritization framework that scores Reach, Impact, Confidence and Effort. RICE score = Reach &times; Impact &times; Confidence &divide; Effort.','Brief, section 9'],
+['Revisit condition','An observable result that would lead Flood-It to reconsider a channel later in 2027.','Brief, section 6'],
+['SEO (search engine optimization)','Improving how a website appears in search results.','Brief, section 3'],
+['STAR','Situation, Task, Action, Result. Each night opens with a STAR Goal, and you write one STAR line at the end of each night.','Introduction deck'],
+['Store conversion rate','The share of people who view a store page and then install the game.','Brief, section 2'],
+['Strategy Review Committee','The group inside the agency that tests a recommendation before the client sees it. In this capstone it is one person: the Senior Manager.','Brief, section 5']
+];
+const FAQ=[
+['Is there a right answer?','No. The Brief contains no answer, and your cohort builds it. Reasoning is scored, not agreement with any single answer. A different recommendation that is fully supported by evidence can earn full marks.','Brief, sections 1 and 10'],
+['Can we fund three channels?','No. The recommendation names exactly two channels as Fund. A plan that funds three channels does not answer the question.','Brief, section 7'],
+['Can our pod recommend deferring its own channel?','Yes. A pod that recommends deferring its own channel, with evidence, can earn full marks.','Brief, section 7'],
+['When can I change a score?','Only if there is new evidence.','Night 4 guide, step 2'],
+['Can I export the GA4 data?','No. You have Viewer access only, and Google scrambles the data on purpose. Read patterns and describe them in words.','Brief, section 3'],
+['What do "(direct)" and "(not set)" mean in GA4?','GA4 could not tell where that traffic came from.','Brief, section 11'],
+['Do I state store ratings and prices as facts?','No. Store ratings, rating counts, update dates, in-app prices and social media accounts change at any time. Look them up and record the date checked.','Brief, section 3'],
+['Is a spreadsheet required?','No. A spreadsheet is optional, and no template is provided. You may build a simple one if it helps.','Brief, section 11'],
+['Is the running agenda graded?','No. It is not graded, and it is never used as evidence in the peer score.','Brief, Evaluation'],
+['Are the Preliminary Discovery and AI Disclosure Statement graded?','They carry no points, but they are required. Your captain checks them every night and signs them off on Night 5. The graded work depends on them.','Brief, Evaluation'],
+['Are Flood-It, the agency and the budget real?','No. This is a fictional learning exercise. The engagement, the agency, the client contact and the budget are invented for teaching purposes.','Brief, front page'],
+['Can I use AI?','Yes, responsibly. You check what AI produces, and every fellow logs each use in Part 5 of the AI Disclosure Statement.','Brief, section 1'],
+['Who do I ask when I am stuck?','Ask your captain first. Still stuck? Bring it to the whole cohort GChat or a senior captain. Captains help with logistics and navigating the work. They never write the work or give you the answer.','Help path']
+];
+function pToolkit(){
+ const bm=PODS.map(p=>card(p.n,p.color,`Pod ${p.n}: ${p.ch}`,`<p><b>Benchmark:</b> ${p.bm}</p><p><b>Resources</b></p><ul>${p.res.map(r=>`<li><b>${r[0]}.</b> ${r[1]}</li>`).join('')}</ul>`)).join('');
+ return `
+ <h1>Toolkit</h1>
+ <p class="lede">Words, benchmarks, templates and answers, all in one place.</p>
+ ${sec('glossary','Glossary',`<div class="field"><label for="gf">Filter the glossary</label><input id="gf" type="search" placeholder="Type a word, like retention"></div><dl class="gl" id="gl">${GLOSS.map(g=>`<div class="gl-item sx" data-t="${g[0].replace(/"/g,'&quot;')}"><dt>${g[0]}</dt><dd>${g[1]} <span class="src">${g[2]}</span></dd></div>`).join('')}</dl><p id="gnone" class="res" hidden>No matching term. Try a shorter word.</p>`)}
+ ${sec('benchmarks','Pod benchmarks and resources',`
+  <p>Each pod has one published benchmark, a fixed industry figure it uses as its reference point. Cite it with its source and year every time you use it, and check the edition you read. Every pod also checks both Flood-It store pages and three to five "color flood" competitors, with the date checked.</p>
+  <div class="grid g2">${bm}</div>
+  ${card('','purple','For all pods',`<ul><li><b>GameAnalytics 2026 benchmark summary.</b> The newer edition. Check whether the 2025 figures still hold.</li><li><b>Flood-It GA4 demo property and access help.</b> Flood-It's own analytics, four reports. Set the date range first and record the menu path.</li><li><b>Flood-It on the App Store and on Google Play.</b> Read the rating with its count. Counts on Google Play are rounded. Record the date checked.</li><li><b>Competitor search "color flood" on both stores.</b> Compare listings, not total downloads.</li><li><b>Flood-It BigQuery gaming demo dataset guide (optional).</b> Raw event data from 2018. Real but old, and not required.</li></ul><p class="res">The links for these resources are in the Brief's Resources section.</p>`)}`)}
+ ${sec('ai-log','AI Disclosure log fields',`
+  <p>The AI Disclosure Statement is a living record of every meaningful way your pod used AI tools during the capstone. Log each use the day it happens. Short entries are fine; missing entries are not.</p>
+  ${tbl('Part 5 ongoing use case log',['Field','What to record'],[['Date','The day you used AI'],['User','Which fellow used it'],['Tool','Which AI tool or platform'],['Use case','What you used it for']])}
+  <div class="grid g2" style="margin-top:16px">
+   ${sticky('gn','Humans are responsible',`<p>The humans of this project are the ones responsible for the content. Part 4 holds five agreements on using AI responsibly. One example agreement: never input sensitive, confidential or proprietary project data into public AI models that use inputs for training.</p>`,'AI Disclosure Statement template')}
+   ${card('','blue','The five parts',`<ol><li>Project details</li><li>AI ideation</li><li>AI toolkit</li><li>Quality assurance, accountability and ethical considerations</li><li>Ongoing use case log</li></ol><p>${CP(L.ai,'AI Disclosure Statement')}</p>`)}
+  </div>`)}
+ ${sec('templates','Templates and documents',`<p>Every link below opens a "make a copy" prompt, so your pod gets its own copy.</p>
+  ${tbl('Make-a-copy links',['Document','Use'],[
+   ['FA26 Capstone Brief',CP(L.brief,'Open the Brief')+'<br><span class="res">Read it before Night 1 and keep it open while you work.</span>'],
+   ['RICE Framework Scorecard',CP(L.rice,'Open the template')+'<br><span class="res">One copy per DM cohort.</span>'],
+   ['Running Agenda',CP(L.agenda,'Open the template')+'<br><span class="res">One copy per cohort.</span>'],
+   ['Pod Team Charter',CP(L.charter,'Open the template')+'<br><span class="res">One copy per pod.</span>'],
+   ['AI Disclosure Statement',CP(L.ai,'Open the template')+'<br><span class="res">One copy per pod.</span>'],
+   ['Self and Peer Review',CP(L.peer,'Open the guide')+'<br><span class="res">One copy per pod.</span>'],
+   ['Deck template',CP(L.deck,'Open the template')],
+   ['Project deck (Drive)',A(L.project,'Open in Drive (make a copy)')],
+   ['Night 1 to Night 6 guides',[1,2,3,4,5,6].map(k=>CP(L['n'+k],'Night '+k)).join('<br>')]
+  ])}`)}
+ ${sec('faq','FAQ',FAQ.map(f=>`<details class="faq sx" data-t="${f[0].replace(/"/g,'&quot;')}"><summary>${f[0]}</summary><p style="margin-top:8px">${f[1]} <span class="src">${f[2]}</span></p></details>`).join(''))}
+ `;
+}
+
+/* ===== Grading ===== */
+function pGrading(){
+ return `
+ <h1>Grading</h1>
+ <p class="lede">Your grade is out of 100 points in two parts. 80 points are shared by the whole cohort, and 20 points are individual. Collaboration is one of the skills being tested.</p>
+ ${sec('shared-80','The shared 80 points',`
+  <p>Every fellow in the cohort receives the same shared score, evaluated by the Senior Manager through the memo and the Night 6 presentation. There are four categories. Each is scored from 0 to 4 and multiplied by 5, so each is worth up to 20 points.</p>
+  ${tbl('Shared 80 points: four categories',['Category','What it asks','Where it is assessed'],[
+   ['Accuracy','Are all four scorecards sourced and dated, and is the method applied the same way across pods?','The memo and the deck'],
+   ['Utility','Could the client act on the memo alone? Does it name the two choices first and give the other two channels positions and revisit conditions?','The memo'],
+   ['Communication','Does the work tell one connected story from evidence to choice, and does it address alternatives and limits?','The memo and the deck'],
+   ['Presentation','Does the presentation give the answer first, is every section clear, and can every speaker explain their numbers?','The Night 6 presentation']])}
+  <div class="grid g2" style="margin-top:16px">
+   ${tbl('Score bands',['Score','Band'],[['0','Incomplete'],['1','Emerging'],['2','Developing'],['3','Complete'],['4','Proficient']])}
+   ${sticky('gn','What the scores mean',`<ul><li><b>4:</b> Proficient work with every score supported.</li><li><b>3:</b> Small gaps.</li><li><b>2:</b> Several unsupported scores.</li><li><b>1:</b> Mostly unsupported work.</li><li><b>0:</b> Missing work.</li></ul><p>Reasoning is scored, not agreement with any single answer. A different recommendation that is fully supported by evidence can earn full marks.</p>`,'Brief, Evaluation')}
+  </div>`)}
+ ${sec('individual-20','The individual 20 points',`<div class="grid g2">
+   ${card('10','pink','Self-score',`<p>You score your own contribution out of 10, with a short explanation.</p>`)}
+   ${card('10','blue','Peer score',`<p>Your pod agrees your peer score out of 10 in a conversation after Night 6.</p>`)}
+  </div>
+  <p style="margin-top:12px">The two scores together make your individual 20 points. They come from your Team Charter final review, and both are judged against the five COOP competencies.</p>`)}
+ ${sec('worked-example','A worked example',`<div class="grid g2" style="align-items:start">
+   ${card('','yellow','65 + 19 = 84',`<ol><li>The Senior Manager scores Accuracy 3, Utility 4, Communication 3 and Presentation 3.</li><li>That adds up to 13, and 13 &times; 5 = <b>65</b> shared points for every fellow.</li><li>A fellow with a self-score of 9 and a peer score of 10 earns <b>19</b> individual points.</li><li>That fellow's total is <b>84</b> out of 100.</li></ol>`,'Most of the grade is shared. The individual part rewards doing a fair share.')}
+   <div class="card c-green sx" data-t="Try the grade math"><header><span>Try your own numbers</span></header><div class="body">
+    <p class="res">Practice only. Nothing is saved.</p>
+    <div class="calc">
+     <div class="field"><label for="g1">Accuracy (0 to 4)</label><input id="g1" type="number" min="0" max="4" value="3"></div>
+     <div class="field"><label for="g2">Utility (0 to 4)</label><input id="g2" type="number" min="0" max="4" value="4"></div>
+     <div class="field"><label for="g3">Communication (0 to 4)</label><input id="g3" type="number" min="0" max="4" value="3"></div>
+     <div class="field"><label for="g4">Presentation (0 to 4)</label><input id="g4" type="number" min="0" max="4" value="3"></div>
+     <div class="field"><label for="g5">Self-score (out of 10)</label><input id="g5" type="number" min="0" max="10" value="9"></div>
+     <div class="field"><label for="g6">Peer score (out of 10)</label><input id="g6" type="number" min="0" max="10" value="10"></div>
+    </div>
+    <p>Shared: <b id="gs">65</b> of 80. Individual: <b id="gi">19</b> of 20.</p>
+    <p>Total: <span class="big" style="font-family:var(--hand);font-size:2.2rem;color:var(--yellow)" id="gt" aria-live="polite">84</span> out of 100</p>
+   </div></div>
+  </div>`)}
+ ${sec('peer-review','How peer review runs',`<div class="grid g2" style="align-items:start">
+   ${notebook('The basics',['<b>Night 3:</b> your pod holds its first peer review round, Team Alignment, on how it works together. Record it in Part 5 of the Team Charter.','<b>After Night 6:</b> the pod holds the peer review conversation, and each fellow completes their final review.','<b>Everyone starts at full marks.</b> A score is lowered only with clear evidence, such as owned work left undone or absences the pod was not told about.','Every fellow who contributed fairly can earn full marks. The peer score is not a ranking of fellows.','<b>The running agenda is never used as evidence.</b>','Your captain records each score and signs off your final review.'])}
+   ${sticky('bl','How to prepare',`<ul><li>Keep notes as you go: one or two lines on what you did and which competency it showed. Your nightly reflections and STAR lines are ideal.</li><li>Be honest about yourself. A self-score that matches the evidence is stronger than an inflated one.</li><li>Be fair about your teammates. Base every comment on what someone did, not on who they are.</li><li>If something is not working during the project, raise it early with your team or your captain.</li></ul><p>Use the ${CP(L.peer,'Self and Peer Review guide')} for the session format.</p>`,'Self and Peer Review guide')}
+  </div>`)}
+ ${sec('competencies','The five COOP competencies',`<div class="grid g3">${COMP.map((c,i)=>card(i+1,COL[i%5],c,`<p>Part of your self-score and your peer score.</p>`)).join('')}</div>
+  <p style="margin-top:12px">In Part 3 of the Team Charter, each Associate chooses two or three of the five to lead with, says how they will show them, and revisits them in the final review. See the ${CP(L.charter,'Team Charter')} and the ${CP(L.peer,'Self and Peer Review guide')} for what each looks like.</p>`)}
+ ${sec('required-not-graded','Required, not graded',`<p>The Preliminary Discovery and the AI Disclosure Statement carry no points, but they are required. Your captain checks them every night and signs them off on Night 5. The graded work depends on them: a thin Discovery leads to low Accuracy, and the AI Disclosure Statement is the professional record of how your pod used and checked AI. The running agenda is not graded either.</p>`)}
+ `;
+}
+
+/* ===== Mount ===== */
+const PAGES=[
+ {id:'start',title:'Start Here',nav:'Start Here',html:pStart},
+ {id:'roadmap',title:'Roadmap',nav:'Roadmap',html:pRoadmap},
+ ...NIGHTS.map((n,i)=>({id:n.id,title:n.label,nav:'Roadmap',html:()=>pNight(n,i)})),
+ {id:'playbook',title:'Playbook',nav:'Playbook',html:pPlaybook},
+ {id:'deliverables',title:'Deliverables',nav:'Deliverables',html:pDeliverables},
+ {id:'whos-who',title:"Who's Who",nav:"Who's Who",html:pWho},
+ {id:'toolkit',title:'Toolkit',nav:'Toolkit',html:pToolkit},
+ {id:'grading',title:'Grading',nav:'Grading',html:pGrading}
+];
+const NAV=[['start','Start Here'],['roadmap','Roadmap'],['playbook','Playbook'],['deliverables','Deliverables'],['whos-who',"Who's Who"],['toolkit','Toolkit'],['grading','Grading']];
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+document.getElementById('pages').innerHTML=PAGES.map(p=>`<div class="page" id="${p.id}" data-title="${p.title.replace(/"/g,'&quot;')}" data-nav="${p.nav}" hidden>${p.html()}</div>`).join('');
+$('#mainnav').innerHTML=NAV.map(([id,t])=>`<a href="#${id}" data-nav="${t}">${t}</a>`).join('');
+$('#brandned').innerHTML=ned();
+$('#stuckmenu').innerHTML=`<option value="">I'm stuck on...</option>`+STUCK.map(([t,h])=>`<option value="${h}">${t}</option>`).join('');
+if(SHOW_DRAFT_BANNER) $('#draftbar').hidden=false;
+
+/* ===== Router ===== */
+const pageEls=$$('.page');
+function route(){
+ let id=decodeURIComponent(location.hash.slice(1))||'start';
+ let el=document.getElementById(id);
+ /* "Skip to content" (#main): keep the current page and move focus to the content */
+ if(el && el.id==='main'){ const cur=pageEls.find(p=>!p.hidden); if(cur){ el.focus({preventScroll:true}); el.scrollIntoView({block:'start'}); return; } el=null; }
+ /* Unknown ids, or ids that live outside a guide page, fall back to Start Here */
+ if(!el || !(el.classList.contains('page')||el.closest('.page'))) el=document.getElementById('start');
+ const page=el.classList.contains('page')?el:el.closest('.page');
+ pageEls.forEach(p=>p.hidden=p!==page);
+ $$('#mainnav a').forEach(a=>{ if(a.dataset.nav===page.dataset.nav) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+ document.title=(page.id==='start'?'':page.dataset.title+' | ')+"Ned's Capstone Survival Guide";
+ $('#mainnav').classList.remove('open'); $('#menubtn').setAttribute('aria-expanded','false');
+ $('#results').hidden=true;
+ $('#stuckmenu').value='';
+ if(el===page){ window.scrollTo(0,0); const h=$('h1',page); if(h){h.setAttribute('tabindex','-1'); h.focus({preventScroll:true});} }
+ else { el.scrollIntoView({block:'start'}); el.classList.add('flash'); setTimeout(()=>el.classList.remove('flash'),1700);
+   if(el.tagName==='DETAILS') el.open=true; }
+}
+window.addEventListener('hashchange',route);
+
+/* ===== Menus ===== */
+$('#menubtn').addEventListener('click',()=>{const o=$('#mainnav').classList.toggle('open');$('#menubtn').setAttribute('aria-expanded',o);});
+$('#stuckmenu').addEventListener('change',e=>{ if(e.target.value) location.hash=e.target.value; });
+$('#stuckbtn').addEventListener('click',()=>{const s=$('#stuck');const o=s.classList.toggle('open');s.classList.toggle('min',!o&&window.innerWidth>720&&false);$('#stuckbtn').textContent=o?'Less':'More';$('#stuckbtn').setAttribute('aria-expanded',o);});
+
+/* ===== Search ===== */
+let uid=0;
+const INDEX=[];
+pageEls.forEach(p=>{
+ INDEX.push({title:p.dataset.title,page:p.dataset.title,text:'',id:p.id,hay:p.dataset.title.toLowerCase()});
+ $$('.sx',p).forEach(b=>{ if(!b.id) b.id='x'+(++uid); INDEX.push({title:b.dataset.t||'',page:p.dataset.title,id:b.id,text:b.textContent.replace(/\s+/g,' ').trim(),hay:((b.dataset.t||'')+' '+b.textContent).toLowerCase()}); });
+ $$('.sec',p).forEach(s=>{ const h=$('h2',s); INDEX.push({title:h.textContent,page:p.dataset.title,id:s.id,text:'',hay:h.textContent.toLowerCase()}); });
+});
+const q=$('#q'),res=$('#results');
+function doSearch(){
+ const v=q.value.trim().toLowerCase();
+ if(v.length<2){res.hidden=true;return;}
+ const toks=v.split(/\s+/);
+ let hits=INDEX.filter(e=>toks.every(t=>e.hay.includes(t)));
+ hits.forEach(e=>{e.s=(e.title.toLowerCase().includes(toks[0])?2:0)+(e.text===''?1:0);});
+ hits.sort((a,b)=>b.s-a.s);
+ const seen=new Set(); hits=hits.filter(h=>{const k=h.title+h.page; if(seen.has(k))return false; seen.add(k); return true;}).slice(0,8);
+ res.hidden=false;
+ const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+ const snip=(t,i)=>{ if(!t) return ''; let s=Math.max(0,i-30); if(s>0){const sp=t.indexOf(' ',s); if(sp>-1&&sp<i) s=sp+1;} let e=Math.min(t.length,s+110); if(e<t.length){const sp=t.lastIndexOf(' ',e); if(sp>s) e=sp;} return (s>0?'...':'')+t.slice(s,e)+(e<t.length?'...':''); };
+ res.innerHTML=hits.length?hits.map(h=>{const i=h.text?Math.max(0,h.text.toLowerCase().indexOf(toks[0])):-1; const sn=snip(h.text,i); return `<a href="#${esc(h.id)}"><b>${esc(h.title)}</b><small>${esc(h.page)}${sn?' &middot; '+esc(sn):''}</small></a>`;}).join(''):`<div class="none">Nothing found for "${esc(v)}". Try a shorter word, or use the "I'm stuck on" menu.</div>`;
+}
+q.addEventListener('input',doSearch);
+q.addEventListener('keydown',e=>{ if(e.key==='Escape'){res.hidden=true;} if(e.key==='Enter'){const a=$('a',res); if(a){location.hash=a.getAttribute('href').slice(1);q.blur();}} });
+document.addEventListener('click',e=>{ if(!e.target.closest('.search')) res.hidden=true; });
+
+/* ===== Interactive bits ===== */
+function calcRice(){const r=+$('#cr').value,i=+$('#ci').value,c=+$('#cc').value,e=+$('#ce').value;$('#cout').textContent=(r*i*c/e).toFixed(2);}
+['cr','ci','cc','ce'].forEach(id=>$('#'+id).addEventListener('input',calcRice)); calcRice();
+function calcGrade(){const g=n=>Math.max(0,Math.min(n>=5?10:4,+($('#g'+n).value)||0));
+ const sh=(g(1)+g(2)+g(3)+g(4))*5, ind=g(5)+g(6); $('#gs').textContent=sh; $('#gi').textContent=ind; $('#gt').textContent=sh+ind;}
+['g1','g2','g3','g4','g5','g6'].forEach(id=>$('#'+id).addEventListener('input',calcGrade)); calcGrade();
+function rb(){const c=$$('.rb-c:checked').map(x=>x.value);
+ $('#rb-out').textContent=`Role: ${$('#rb-name').value||'(name)'}\nWhat it makes sure gets done: ${$('#rb-what').value||'(describe)'}\nPrimary owner: ${$('#rb-who').value||'(name)'}\nBackup: ${$('#rb-back').value||'(name)'}\nCompetencies shown: ${c.length?c.join(', '):'(choose)'}`;}
+['rb-name','rb-what','rb-who','rb-back'].forEach(id=>$('#'+id).addEventListener('input',rb)); $$('.rb-c').forEach(x=>x.addEventListener('change',rb)); rb();
+$('#rb-copy').addEventListener('click',async()=>{const t=$('#rb-out').textContent;try{await navigator.clipboard.writeText(t);$('#rb-msg').textContent='Copied.';}catch(_){const r=document.createRange();r.selectNodeContents($('#rb-out'));const s=getSelection();s.removeAllRanges();s.addRange(r);$('#rb-msg').textContent='Press Ctrl+C or Cmd+C to copy.';}});
+$('#gf').addEventListener('input',e=>{const v=e.target.value.trim().toLowerCase();let n=0;$$('#gl .gl-item').forEach(i=>{const m=!v||i.textContent.toLowerCase().includes(v);i.hidden=!m;if(m)n++;});$('#gnone').hidden=n>0;});
+
+route();
+</script>
+</body>
+</html>
